@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Phishy Gift — DEMO for Mr. Makedon’s Class</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+    body {
+      margin:0;
+      font-family: Arial, sans-serif;
+      background:#0a0a0a;
+      color:#e5e7eb;
+    }
+    .header {
+      text-align:center;
+      padding:20px;
+      background:#111;
+      border-bottom:3px solid red;
+      position:relative;
+    }
+    .flash {
+      position:absolute;
+      width:16px;
+      height:16px;
+      border-radius:50%;
+      background:red;
+      box-shadow:0 0 15px red;
+      animation: blink 0.7s infinite alternate;
+    }
+    .flash.left {left:20px; top:20px;}
+    .flash.right {right:20px; top:20px;}
+    @keyframes blink {
+      from {opacity:.2; transform:scale(.9);}
+      to {opacity:1; transform:scale(1);}
+    }
+    h1 {margin:0; font-size:28px; color:#fca5a5;}
+    .subtitle {font-size:14px; opacity:.85;}
+    .content {
+      max-width:700px;
+      margin:30px auto;
+      background:#141414;
+      border:2px solid red;
+      padding:20px;
+      border-radius:12px;
+      text-align:center;
+    }
+    .warning {
+      background:#ff3b3b;
+      color:#111;
+      font-weight:700;
+      text-transform:uppercase;
+      padding:8px;
+      border-radius:8px;
+      margin-bottom:16px;
+      animation: pulse 1s infinite;
+    }
+    @keyframes pulse {
+      50% {transform:scale(1.05);}
+    }
+    .fake-offer {
+      background:#1f2937;
+      padding:16px;
+      border-radius:10px;
+      border:1px solid #374151;
+      margin-bottom:20px;
+    }
+    .fake-offer a {
+      color:#93c5fd;
+      text-decoration:underline;
+      font-weight:700;
+      cursor:pointer;
+    }
+    .scary-buttons {
+      display:flex;
+      justify-content:center;
+      gap:20px;
+      flex-wrap:wrap;
+      margin-top:20px;
+    }
+    .scary-btn {
+      padding:16px 28px;
+      font-size:18px;
+      font-weight:900;
+      color:#111;
+      border:none;
+      border-radius:12px;
+      cursor:pointer;
+      text-transform:uppercase;
+      letter-spacing:1px;
+      animation: shake 0.5s infinite;
+    }
+    .scary-btn.red {
+      background:#ff0000;
+      box-shadow:0 0 15px #ff0000;
+    }
+    .scary-btn.yellow {
+      background:#ffea00;
+      box-shadow:0 0 15px #ffea00;
+    }
+    @keyframes shake {
+      0% {transform:translate(1px, 1px) rotate(0deg);}
+      20% {transform:translate(-2px, 0px) rotate(-2deg);}
+      40% {transform:translate(2px, 1px) rotate(2deg);}
+      60% {transform:translate(-1px, -1px) rotate(0deg);}
+      80% {transform:translate(1px, 2px) rotate(2deg);}
+      100% {transform:translate(0px, -1px) rotate(-2deg);}
+    }
+    .demo-note {
+      font-size:13px;
+      margin-top:14px;
+      opacity:.8;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="flash left"></div>
+    <div class="flash right"></div>
+    <h1>Mr. Makedon’s Phishing Demo</h1>
+    <div class="subtitle">This is an educational simulation. No real danger!</div>
+  </div>
+
+  <div class="content">
+    <div class="warning">⚠ Warning — Demonstration Only ⚠</div>
+    <p>Here’s an example of what a suspicious pop-up might look like.</p>
+    <div class="fake-offer">
+      <p><em>“Hello, I’ve got a nice gift for you, just click this link.”</em></p>
+      <p>
+        <a id="fakeLink" href="#">example.com/gift</a>
+        <small>(Disabled — this is a classroom demo)</small>
+      </p>
+    </div>
+
+    <div class="scary-buttons">
+      <button class="scary-btn red" id="downloadBtn">Download Now</button>
+      <button class="scary-btn yellow" id="claimBtn">Claim Prize</button>
+    </div>
+
+    <p class="demo-note"><strong>Remember:</strong> In the real world, never click suspicious links or buttons! Report them instead.</p>
+  </div>
+
+  <script>
+    const fakeLink = document.getElementById('fakeLink');
+    fakeLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      alert("You just got a virus... Jk, this is Mr. Makedon’s safe demo!");
+    });
+
+    document.getElementById('downloadBtn').addEventListener('click', () => {
+      alert("Scary button clicked! In real life, this could download malware. Here it’s just a demo from Mr. Makedon.");
+    });
+
+    document.getElementById('claimBtn').addEventListener('click', () => {
+      alert("Prize button clicked! In real life, this might steal your info. Here it’s just a demo from Mr. Makedon.");
+    });
+  </script>
+</body>
+</html>
