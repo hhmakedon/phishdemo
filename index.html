@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Phishy Gift — DEMO for Mr. Makedon’s Class</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Phishy Gift — DEMO for Mr. Makedon’s Class</title>
   <style>
     body {
       margin:0;
@@ -89,14 +89,8 @@
       letter-spacing:1px;
       animation: shake 0.5s infinite;
     }
-    .scary-btn.red {
-      background:#ff0000;
-      box-shadow:0 0 15px #ff0000;
-    }
-    .scary-btn.yellow {
-      background:#ffea00;
-      box-shadow:0 0 15px #ffea00;
-    }
+    .scary-btn.red { background:#ff0000; box-shadow:0 0 15px #ff0000; }
+    .scary-btn.yellow { background:#ffea00; box-shadow:0 0 15px #ffea00; }
     @keyframes shake {
       0% {transform:translate(1px, 1px) rotate(0deg);}
       20% {transform:translate(-2px, 0px) rotate(-2deg);}
@@ -105,11 +99,8 @@
       80% {transform:translate(1px, 2px) rotate(2deg);}
       100% {transform:translate(0px, -1px) rotate(-2deg);}
     }
-    .demo-note {
-      font-size:13px;
-      margin-top:14px;
-      opacity:.8;
-    }
+    .demo-note { font-size:13px; margin-top:14px; opacity:.8; }
+    .lesson-link { margin-top:20px; display:block; font-size:16px; color:#93c5fd; text-decoration:underline; }
   </style>
 </head>
 <body>
@@ -137,21 +128,24 @@
     </div>
 
     <p class="demo-note"><strong>Remember:</strong> In the real world, never click suspicious links or buttons! Report them instead.</p>
+    
+    <!-- New link to second page -->
+    <a class="lesson-link" href="lesson.html">Go to the Phishing Safety Lesson ➡️</a>
   </div>
 
   <script>
     const fakeLink = document.getElementById('fakeLink');
     fakeLink.addEventListener('click', (e) => {
       e.preventDefault();
-      alert("You just got a virus... Jk, this is Mr. Makedon’s safe demo!");
+      alert("This could be dangerous in real life! But here it’s just a safe demo.");
     });
 
     document.getElementById('downloadBtn').addEventListener('click', () => {
-      alert("Scary button clicked! In real life, this could download malware. Here it’s just a demo from Mr. Makedon.");
+      alert("This could install a virus in real life! Be careful.");
     });
 
     document.getElementById('claimBtn').addEventListener('click', () => {
-      alert("Prize button clicked! In real life, this might steal your info. Here it’s just a demo from Mr. Makedon.");
+      alert("This could try to steal your info in real life! Stay safe.");
     });
   </script>
 </body>

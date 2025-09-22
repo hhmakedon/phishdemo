@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Phishing Safety Lesson — Mr. Makedon</title>
+  <meta name="description" content="A simple, kid-friendly guide to spotting phishing. For 6th graders." />
+  <style>
+    :root {
+      --bg: #0a0a0a; --panel:#141414; --ink:#e5e7eb; --muted:#9ca3af;
+      --accent:#fca5a5; --warn:#ff3b3b; --ok:#34d399; --border:#374151; --focus:#93c5fd; --yellow:#facc15;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5}
+    .header{position:sticky;top:0;background:#111;border-bottom:3px solid var(--warn);padding:16px;text-align:center}
+    h1{margin:0;color:var(--accent);font-size:26px}
+    .subtitle{color:var(--muted);font-size:14px}
+    .wrap{max-width:980px;margin:24px auto;padding:0 16px 32px}
+    .panel{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:16px;margin:14px 0}
+    h2{font-size:22px;margin:6px 0 12px}
+    .lead{color:var(--muted)}
+    .grid{display:grid;gap:12px}
+    @media(min-width:860px){.grid.cols-2{grid-template-columns:1fr 1fr}.grid.cols-3{grid-template-columns:repeat(3,1fr)}}
+    .card{background:#0f0f0f;border:1px solid var(--border);border-radius:12px;padding:12px}
+    .badge{display:inline-flex;align-items:center;gap:8px;font-weight:800;text-transform:uppercase;font-size:12px;color:#111;background:var(--yellow);padding:6px 10px;border-radius:999px;letter-spacing:.3px}
+    .demo{background:#1f2937;border:1px dashed #4b5563;border-radius:12px;padding:10px;margin-top:8px;font-family:ui-monospace,Consolas,Menlo,monospace}
+    .demo a{color:var(--focus);text-decoration:underline;word-break:break-all}
+    .row{display:flex;gap:10px;flex-wrap:wrap}
+    button,.btn{background:#202020;color:var(--ink);border:1px solid var(--border);border-radius:12px;padding:10px 14px;cursor:pointer;font-weight:700}
+    .btn-warn{background:var(--warn);color:#111;border-color:#ff7070}
+    .btn-ok{background:var(--ok);color:#111;border-color:#6ee7b7}
+    .btn-ghost{background:transparent}
+    .small{font-size:12px;color:var(--muted)}
+    .email{background:#0e0e0e;border:1px solid var(--border);border-radius:12px;padding:12px}
+    .pill{display:inline-block;font-size:11px;font-weight:800;text-transform:uppercase;background:#111827;border:1px solid #374151;padding:4px 8px;border-radius:999px;margin-right:6px}
+    mark{background:rgba(252,165,165,.25);padding:2px 4px;border-radius:6px}
+    input[type="url"],input[type="text"]{width:100%;padding:10px 12px;border-radius:12px;border:1px solid var(--border);background:#0e0e0e;color:var(--ink)}
+    .out{background:#0f172a;border:1px solid #334155;border-radius:12px;padding:12px;font-family:ui-monospace,Consolas,Menlo,monospace;white-space:pre-wrap;word-break:break-all}
+    .q-item{border-top:1px solid #2c2c2c;padding-top:10px;margin-top:8px}
+    label.choice{display:flex;gap:10px;align-items:flex-start;padding:8px;border:1px solid var(--border);border-radius:10px;cursor:pointer}
+    footer{text-align:center;color:var(--muted);font-size:12px;margin-top:18px}
+    nav{display:flex;justify-content:center;gap:10px;margin-top:10px}
+    nav a{color:var(--focus)}
+  </style>
+</head>
+<body>
+  <header class="header">
+    <h1>Phishing Safety Lesson</h1>
+    <div class="subtitle">Made by Mr. Makedon • Read it. Try it. Stay safe.</div>
+    <nav>
+      <a href="index.html">← Back to Demo</a>
+    </nav>
+  </header>
+
+  <main class="wrap" aria-live="polite">
+    <section class="panel" aria-label="What is phishing?">
+      <h2>What is Phishing?</h2>
+      <p class="lead">Phishing is when someone tries to trick you into clicking a bad link or sharing private info. They often pretend to be a real person or company.</p>
+      <ul>
+        <li><strong>Goal:</strong> steal passwords, codes, or money.</li>
+        <li><strong>Where:</strong> email, text, DMs, pop‑ups, or fake websites.</li>
+        <li><strong>Your rule:</strong> <em>Stop → Check → Verify → Report.</em></li>
+      </ul>
+    </section>
+
+    <section class="panel" aria-labelledby="flags-h">
+      <h2 id="flags-h">6 Common Red Flags</h2>
+      <div class="grid cols-3">
+        <div class="card"><div class="badge">⏰ Urgent</div><p>“Do this <strong>now</strong> or you lose your account!” They want you to rush.</p></div>
+        <div class="card"><div class="badge">🔗 Strange Link</div><p>Link text looks normal, but the real link is weird or misspelled.</p><div class="demo">Shown: <a href="#" data-real="http://faceb00k-security.example.ru/login">facebook.com/security</a></div></div>
+        <div class="card"><div class="badge">🧑‍✈️ Fake Sender</div><p>Pretends to be IT or a teacher. Real staff will <em>never</em> ask for your password.</p></div>
+        <div class="card"><div class="badge">📎 Surprise File</div><p>Unexpected file (ZIP, EXE, DOCM). Could be harmful.</p></div>
+        <div class="card"><div class="badge">💳 Gift Cards</div><p>“Buy gift cards and send the codes.” This is a scam.</p></div>
+        <div class="card"><div class="badge">🔤 Typos & Tone</div><p>Bad grammar, odd tone, or threats/rewards that feel off.</p></div>
+      </div>
+    </section>
+
+    <section class="panel" aria-labelledby="ex-h">
+      <h2 id="ex-h">Phish vs. Real Message</h2>
+      <p class="small">Click <em>Show problems</em> to highlight issues in the fake message.</p>
+      <div class="grid cols-2">
+        <div class="email" id="phishEmail">
+          <p><span class="pill">from</span> IT Desk &lt;it-desk@school-verify-secure.com&gt;</p>
+          <h3>🔐 ACTION NEEDED: Password ends in 10 minutes</h3>
+          <p>Hello. Your account will be <strong>deleted</strong> unless you confirm right away. Use this link: <a href="#" data-real="https://school-verify-secure.com/login">portal.school.edu</a></p>
+          <p>Also send your recovery code to prove this is you.</p>
+          <div class="row" style="margin-top:8px">
+            <button class="btn-warn" id="revealPhish">Show problems</button>
+            <button class="btn btn-ghost" id="resetPhish">Reset</button>
+          </div>
+        </div>
+        <div class="email">
+          <p><span class="pill">from</span> noreply@school.edu</p>
+          <h3>✅ Reminder: Update your password by Friday</h3>
+          <p>Please update your password this week using the official site.<br><strong>We will never ask for your password or code by email.</strong></p>
+          <p>Go to: <a href="#" data-real="https://portal.school.edu/security">https://portal.school.edu/security</a></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" aria-labelledby="li-h">
+      <h2 id="li-h">🔍 Link Checker</h2>
+      <p class="lead">Paste a link. We will show the main parts and simple warnings. This stays on your computer only.</p>
+      <input id="urlInput" type="url" placeholder="Paste a link, e.g., https://faceb00k-security.example.ru/login" spellcheck="false" />
+      <div class="row" style="margin-top:8px">
+        <button id="checkUrl" class="btn">Check</button>
+        <button id="fillWeird" class="btn">Try a tricky link</button>
+        <button id="fillClean" class="btn">Try a safe link</button>
+      </div>
+      <div id="urlOut" class="out" role="status" aria-live="polite" style="display:none"></div>
+      <p class="small" style="margin-top:6px">Tip: On computers, hover a link to see where it really goes.</p>
+    </section>
+
+    <section class="panel" aria-labelledby="practice-h">
+      <h2 id="practice-h">What Would You Do?</h2>
+      <div class="grid cols-2">
+        <div class="card">
+          <h3>Pop‑Up Practice</h3>
+          <p>“You won a prize! Click to claim.”</p>
+          <div class="demo">
+            <p><a id="fakeLink" href="#" data-real="https://example.com/gift">example.com/gift</a> <small>(Disabled)</small></p>
+            <div class="row" style="margin-top:8px">
+              <button class="btn-warn" id="downloadBtn">Download Now</button>
+              <button class="btn" id="claimBtn">Claim Prize</button>
+              <button class="btn" id="reportBtn">Report</button>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Smart Steps</h3>
+          <ul>
+            <li>Pause. Don’t rush.</li>
+            <li>Check the sender and the link.</li>
+            <li>Use the real site from your bookmark.</li>
+            <li>Tell a teacher or admin if it seems wrong.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" aria-labelledby="quiz-h">
+      <h2 id="quiz-h">Quick Quiz (5 Questions)</h2>
+      <form id="quizForm">
+        <div class="q-item">
+          <p><strong>1.</strong> A message says “Your account will be deleted in 10 minutes — click now.” What is the best move?</p>
+          <label class="choice"><input type="radio" name="q1" value="a"> Click fast so you don’t lose it.</label>
+          <label class="choice"><input type="radio" name="q1" value="b"> Stop, then use the real school portal or ask a teacher.</label>
+          <label class="choice"><input type="radio" name="q1" value="c"> Send your password to keep it.</label>
+        </div>
+        <div class="q-item">
+          <p><strong>2.</strong> Which looks most real for a school site?</p>
+          <label class="choice"><input type="radio" name="q2" value="a"> portal.school-login-safe.co</label>
+          <label class="choice"><input type="radio" name="q2" value="b"> portal.school.edu</label>
+          <label class="choice"><input type="radio" name="q2" value="c"> school-verify.example.ru</label>
+        </div>
+        <div class="q-item">
+          <p><strong>3.</strong> You get a file named <code>Grades_Update.zip</code> you didn’t expect. What now?</p>
+          <label class="choice"><input type="radio" name="q3" value="a"> Open it right away.</label>
+          <label class="choice"><input type="radio" name="q3" value="b"> Ask the sender and scan it first.</label>
+          <label class="choice"><input type="radio" name="q3" value="c"> Share it with the whole class.</label>
+        </div>
+        <div class="q-item">
+          <p><strong>4.</strong> Someone says they are a teacher and wants $300 in gift cards now. What is this?</p>
+          <label class="choice"><input type="radio" name="q4" value="a"> Normal school request.</label>
+          <label class="choice"><input type="radio" name="q4" value="b"> A scam or phishing.</label>
+          <label class="choice"><input type="radio" name="q4" value="c"> A fun class game.</label>
+        </div>
+        <div class="q-item">
+          <p><strong>5.</strong> What should you <em>never</em> send by email or chat when asked?</p>
+          <label class="choice"><input type="radio" name="q5" value="a"> Your password or MFA code.</label>
+          <label class="choice"><input type="radio" name="q5" value="b"> A link to the school website.</label>
+          <label class="choice"><input type="radio" name="q5" value="c"> A picture of your desktop.</label>
+        </div>
+        <div class="row" style="margin-top:10px">
+          <button type="submit" class="btn-ok">Check Answers</button>
+          <button type="button" id="resetQuiz" class="btn">Reset</button>
+        </div>
+      </form>
+      <p id="quizResult" class="small" aria-live="polite"></p>
+    </section>
+
+    <footer>
+      <p>© <span id="year"></span> Mr. Makedon — Stay sharp online!</p>
+    </footer>
+  </main>
+
+  <script>
+    const $ = (s, r=document)=>r.querySelector(s); const $$ = (s, r=document)=>[...r.querySelectorAll(s)];
+    // Show real link in title
+    $$('a[data-real]').forEach(a=>a.title='Real destination: '+a.getAttribute('data-real'));
+
+    // Highlight problems in the fake email
+    const phishEmail = $('#phishEmail');
+    const marks = [
+      { sel:'h3', text:'Urgent deadline'},
+      { sel:'a', text:'Link text ≠ real link'},
+      { sel:'p:nth-of-type(3)', text:'Asks for secret code'},
+      { sel:'p:nth-of-type(1)', text:'Weird sender address'},
+    ];
+    $('#revealPhish')?.addEventListener('click',()=>{
+      marks.forEach(m=>{const el=$(m.sel,phishEmail); if(!el) return; if(!el.dataset.flag){el.dataset.flag='1'; const wrap=document.createElement('span'); wrap.innerHTML=`<mark title="${m.text}">${el.innerHTML}</mark>`; el.replaceChildren(...wrap.childNodes);} });
+    });
+    $('#resetPhish')?.addEventListener('click',()=>{
+      marks.forEach(m=>{const el=$(m.sel,phishEmail); if(!el) return; if(el.dataset.flag){el.innerHTML=el.textContent; delete el.dataset.flag;}});
+      const a=$('a',phishEmail); if(a) a.textContent='portal.school.edu';
+    });
+
+    // Link checker (simple classroom heuristics)
+    const suspiciousTLDs=['.ru','.tk','.cn','.top','.click','.xyz'];
+    const brandLookalikes=[/fa[cs]e?b0+?ok/i,/paypa1/i,/g00gle/i,/micros0ft/i,/sch00l/i];
+    function analyzeURL(raw){
+      let url=raw.trim(); if(!url) return {ok:false,error:'No URL provided.'};
+      try{ if(!/^https?:\/\//i.test(url)) url='https://'+url; const u=new URL(url);
+        const host=u.hostname; const parts=host.split('.'); const tld='.'+parts.slice(-1)[0]; const domain=parts.slice(-2).join('.');
+        const path=u.pathname+u.search; const flags=[];
+        if(suspiciousTLDs.includes(tld)) flags.push('Uncommon ending (TLD): '+tld);
+        if(/\d/.test(domain)) flags.push('Numbers in the name');
+        if(brandLookalikes.some(r=>r.test(domain))) flags.push('Looks like a brand copy');
+        if(parts.length>3) flags.push('Many subdomains');
+        if(host.split('-').length-1>=2) flags.push('Lots of hyphens');
+        const verdict=flags.length? '⚠️ Be careful. Double‑check it.' : '✅ Looks normal, but still verify.';
+        return {ok:true,url:u.href,host,domain,tld,path,flags,verdict};
+      }catch(e){ return {ok:false,error:'Invalid URL'} }
+    }
+    const urlInput=$('#urlInput'); const urlOut=$('#urlOut');
+    $('#checkUrl')?.addEventListener('click',()=>{
+      const res=analyzeURL(urlInput.value); urlOut.style.display='block';
+      if(!res.ok){ urlOut.textContent='Error: '+res.error; return; }
+      const lines=[
+        'URL: '+res.url,
+        'Host: '+res.host,
+        'Domain: '+res.domain+' (TLD '+res.tld+')',
+        'Path: '+(res.path||'/'),
+        '',
+        'Checks:',
+        ...(res.flags.length? res.flags.map(f=>'• '+f) : ['• No big warnings found.']),
+        '',
+        'Verdict: '+res.verdict,
+      ];
+      urlOut.textContent=lines.join('\n');
+    });
+    $('#fillWeird')?.addEventListener('click',()=>{ urlInput.value='http://faceb00k-security.example.ru/login?continue=portal.school.edu'; urlOut.style.display='none'; });
+    $('#fillClean')?.addEventListener('click',()=>{ urlInput.value='https://portal.school.edu/security'; urlOut.style.display='none'; });
+
+    // Practice buttons
+    const safeAlert=msg=>alert(msg+'\n\n(This is a safe classroom practice.)');
+    $('#fakeLink')?.addEventListener('click',e=>{e.preventDefault(); safeAlert('You clicked a sample link. In real life, always check first.');});
+    $('#downloadBtn')?.addEventListener('click',()=>safeAlert('This could download bad software in real life. Close it and report.'));
+    $('#claimBtn')?.addEventListener('click',()=>safeAlert('Prize links often try to take your info. Use the official site instead.'));
+    $('#reportBtn')?.addEventListener('click',()=>safeAlert('Nice! Telling an adult/teacher is the right move.'));
+
+    // Quiz
+    const answers={q1:'b',q2:'b',q3:'b',q4:'b',q5:'a'}; const quizForm=$('#quizForm'); const quizResult=$('#quizResult');
+    quizForm?.addEventListener('submit',e=>{ e.preventDefault(); let score=0,total=0,miss=[]; for(const [k,v] of Object.entries(answers)){ total++; const pick=quizForm.querySelector(`input[name="${k}"]:checked`); if(pick && pick.value===v) score++; else miss.push(k.toUpperCase()); }
+      quizResult.textContent=`Score: ${score}/${total}`+(miss.length? ` — Review: ${miss.join(', ')}` : ' — Great job!');
+      try{ localStorage.setItem('phishQuizScore',String(score)); }catch{}
+    });
+    $('#resetQuiz')?.addEventListener('click',()=>{ quizForm.reset(); quizResult.textContent=''; });
+
+    // Footer year
+    $('#year').textContent=new Date().getFullYear();
+  </script>
+</body>
+</html>
