@@ -1,431 +1,229 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Phishing Safety Lesson — Mr. Makedon's Class</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Mr. Makedon's classroom lesson: protect your accounts, recognize phishing, and practice safer decisions. No account details needed.">
+  <title>Account Security Lesson — Mr. Makedon's Class</title>
   <style>
-    body {
-      margin:0;
-      font-family: Arial, sans-serif;
-      background:#0a0a0a;
-      color:#e5e7eb;
-      line-height:1.6;
-    }
-    .header {
-      text-align:center;
-      padding:20px;
-      background:#111;
-      border-bottom:3px solid #10b981;
-    }
-    h1 {margin:0; font-size:28px; color:#34d399;}
-    .subtitle {font-size:14px; opacity:.85; margin-top:5px;}
-    .content {
-      max-width:800px;
-      margin:30px auto;
-      padding:20px;
-    }
-    .lesson-section {
-      background:#141414;
-      border:2px solid #10b981;
-      padding:24px;
-      border-radius:12px;
-      margin-bottom:24px;
-    }
-    .lesson-section h2 {
-      color:#34d399;
-      margin-top:0;
-      font-size:22px;
-    }
-    .lesson-section h3 {
-      color:#6ee7b7;
-      font-size:18px;
-      margin-top:20px;
-    }
-    .tip-box {
-      background:#1f2937;
-      border-left:4px solid #fbbf24;
-      padding:12px 16px;
-      margin:16px 0;
-      border-radius:6px;
-    }
-    .tip-box strong {
-      color:#fbbf24;
-    }
-    .red-flag {
-      background:#7f1d1d;
-      border-left:4px solid #ef4444;
-      padding:12px 16px;
-      margin:12px 0;
-      border-radius:6px;
-    }
-    .red-flag strong {
-      color:#fca5a5;
-    }
-    ul {
-      margin:12px 0;
-      padding-left:24px;
-    }
-    li {
-      margin-bottom:8px;
-    }
-    .quiz-section {
-      background:#141414;
-      border:2px solid #8b5cf6;
-      padding:24px;
-      border-radius:12px;
-      margin-bottom:24px;
-    }
-    .quiz-section h2 {
-      color:#a78bfa;
-      margin-top:0;
-    }
-    .question {
-      background:#1f2937;
-      padding:16px;
-      border-radius:8px;
-      margin-bottom:20px;
-    }
-    .question h3 {
-      color:#c4b5fd;
-      margin-top:0;
-      font-size:16px;
-    }
-    .options {
-      margin:12px 0;
-    }
-    .option {
-      background:#374151;
-      padding:10px 14px;
-      margin:8px 0;
-      border-radius:6px;
-      cursor:pointer;
-      transition:background 0.2s;
-      border:2px solid transparent;
-    }
-    .option:hover {
-      background:#4b5563;
-    }
-    .option.selected {
-      border-color:#8b5cf6;
-      background:#4c1d95;
-    }
-    .option.correct {
-      border-color:#10b981;
-      background:#064e3b;
-    }
-    .option.incorrect {
-      border-color:#ef4444;
-      background:#7f1d1d;
-    }
-    .submit-btn {
-      background:#8b5cf6;
-      color:white;
-      padding:12px 32px;
-      font-size:16px;
-      font-weight:700;
-      border:none;
-      border-radius:8px;
-      cursor:pointer;
-      margin-top:16px;
-    }
-    .submit-btn:hover {
-      background:#7c3aed;
-    }
-    .submit-btn:disabled {
-      background:#4b5563;
-      cursor:not-allowed;
-    }
-    .results {
-      background:#1f2937;
-      padding:20px;
-      border-radius:8px;
-      margin-top:20px;
-      display:none;
-      border:2px solid #10b981;
-    }
-    .results.show {
-      display:block;
-    }
-    .results h3 {
-      color:#34d399;
-      margin-top:0;
-    }
-    .back-link {
-      display:inline-block;
-      margin-top:20px;
-      color:#93c5fd;
-      text-decoration:underline;
-      font-size:16px;
-    }
-  </style>
+:root { color-scheme: light; --paper:#f6f5f0; --ink:#182e36; --muted:#4d636b; --teal:#08675b; --line:#d7ded8; --soft:#e7eee7; --white:#fff; --orange:#9c3c23; }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--paper); color:var(--ink); font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; line-height:1.65; }
+a { color:var(--teal); text-underline-offset:4px; }
+button,input { font:inherit; }
+button,a,input,summary { -webkit-tap-highlight-color:transparent; }
+:focus-visible { outline:3px solid #9c3c23; outline-offset:5px; }
+.skip { position:absolute; left:16px; top:-100px; z-index:5; background:var(--white); padding:12px; }
+.skip:focus { top:12px; }
+.wrap { max-width:1120px; margin:auto; padding:0 32px; }
+header { border-bottom:1px solid var(--line); }
+.header-inner { min-height:96px; display:flex; align-items:center; justify-content:space-between; gap:24px; }
+.brand { display:flex; align-items:center; gap:12px; font-size:.8rem; font-weight:800; letter-spacing:.1em; text-transform:uppercase; line-height:1.35; }
+.brand-icon { display:grid; place-items:center; width:42px; height:46px; color:white; background:var(--teal); border-radius:12px 12px 18px 18px; font-size:1.4rem; }
+.class-label { font-size:.85rem; color:var(--muted); }
+.hero { padding:64px 0 40px; }
+.eyebrow { margin:0 0 18px; color:var(--teal); font-size:.76rem; font-weight:800; letter-spacing:.13em; text-transform:uppercase; }
+h1 { max-width:850px; margin:0 0 22px; font-size:clamp(2.5rem,6.2vw,4.8rem); line-height:1.05; letter-spacing:-.055em; font-weight:750; }
+h1 em { font-style:normal; color:var(--teal); }
+.lead { max-width:650px; font-size:1.14rem; color:var(--muted); }
+.meta { display:flex; gap:10px; flex-wrap:wrap; margin-top:24px; }
+.pill { border:1px solid var(--line); border-radius:30px; padding:5px 12px; font-size:.78rem; font-weight:650; background:var(--white); }
+.grid { display:grid; grid-template-columns:1.05fr 1fr; gap:28px; align-items:start; }
+.card { background:var(--white); border:1px solid var(--line); border-radius:18px; padding:30px; }
+h2 { font-size:1.7rem; line-height:1.2; letter-spacing:-.03em; margin:0 0 18px; }
+h3 { font-size:1.05rem; line-height:1.45; margin:0 0 10px; }
+p { margin:0 0 16px; }
+p:last-child { margin-bottom:0; }
+.sim-label { color:var(--orange); background:#fff0e8; border-bottom:1px solid #ead4c8; margin:-30px -30px 24px; padding:14px 30px; border-radius:18px 18px 0 0; font-size:.75rem; font-weight:800; letter-spacing:.08em; text-transform:uppercase; }
+.sender { display:flex; gap:12px; align-items:center; padding-bottom:20px; border-bottom:1px solid var(--line); margin-bottom:22px; }
+.avatar { display:grid; place-items:center; width:42px; height:42px; background:var(--soft); border-radius:50%; flex-shrink:0; font-weight:800; }
+.small { font-size:.85rem; color:var(--muted); }
+.message { padding:18px; background:#f7f8f6; border-radius:10px; border:1px solid var(--line); }
+.message a { font-weight:700; overflow-wrap:anywhere; }
+.notice { padding:14px 18px; border-left:3px solid var(--teal); background:var(--soft); border-radius:0 8px 8px 0; font-size:.9rem; margin-top:22px; }
+.choices { display:grid; gap:10px; margin:22px 0; }
+button { cursor:pointer; }
+.choice { text-align:left; border:1px solid #acbbb5; border-radius:9px; padding:14px 16px; background:var(--white); color:var(--ink); font-weight:650; min-height:48px; }
+.choice:hover { border-color:var(--teal); background:var(--soft); }
+.choice[aria-pressed="true"] { border:2px solid var(--teal); padding:13px 15px; background:var(--soft); }
+.feedback { padding:16px 18px; background:var(--soft); border-radius:9px; margin:16px 0; }
+.feedback:empty { display:none; }
+details { margin-top:24px; border-top:1px solid var(--line); padding-top:18px; }
+summary { cursor:pointer; font-weight:750; color:var(--teal); }
+details ul { padding-left:20px; }
+li { margin:10px 0; }
+.section { margin-top:56px; }
+.section-top { display:flex; justify-content:space-between; align-items:baseline; gap:20px; }
+.section-top p { color:var(--muted); font-size:.9rem; }
+.habits { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+.number { font-size:.78rem; color:var(--teal); font-weight:800; letter-spacing:.08em; margin-bottom:16px; }
+.habits .card { padding:24px; }
+.habits p { font-size:.95rem; color:var(--muted); }
+.cta { margin:40px 0 16px; border-radius:16px; padding:28px; background:var(--ink); color:white; display:flex; justify-content:space-between; align-items:center; gap:24px; }
+.cta h2 { font-size:1.4rem; margin-bottom:8px; }
+.cta p { color:#dce5df; font-size:.9rem; }
+.button { display:inline-block; padding:12px 20px; background:var(--teal); color:white; border:0; border-radius:8px; text-decoration:none; font-weight:750; white-space:normal; text-align:center; min-height:48px; }
+.cta .button { background:#d8efb0; color:var(--ink); flex-shrink:0; }
+.button:hover { filter:brightness(.92); }
+.secondary { background:var(--soft); color:var(--ink); }
+footer { padding:28px 0; margin-top:32px; color:var(--muted); border-top:1px solid var(--line); font-size:.8rem; }
+.lesson-layout { display:grid; grid-template-columns:220px minmax(0,1fr); gap:44px; }
+.contents { position:sticky; top:24px; font-size:.9rem; }
+.contents ol { margin:0; padding-left:20px; }
+.contents p { font-weight:750; }
+.lesson-block { margin-bottom:22px; scroll-margin-top:24px; }
+.lesson-block h2 { font-size:1.45rem; }
+.lesson-block .number { margin-bottom:10px; }
+.lesson-block ul,.lesson-block ol { padding-left:22px; }
+.example { margin-top:18px; border:1px solid var(--line); padding:16px; border-radius:9px; overflow-wrap:anywhere; }
+.example p { margin-bottom:10px; }
+.example p:last-child { margin:0; }
+code { font-family:ui-monospace,SFMono-Regular,monospace; font-size:.9em; overflow-wrap:anywhere; }
+fieldset { min-width:0; padding:0; border:0; margin:28px 0; }
+legend { font-weight:750; padding:0; margin-bottom:10px; line-height:1.5; }
+.option { display:flex; align-items:flex-start; gap:12px; border:1px solid var(--line); border-radius:8px; margin:8px 0; padding:12px; cursor:pointer; }
+.option:hover { background:var(--paper); }
+.option input { margin:6px 0 0; flex-shrink:0; accent-color:var(--teal); width:18px; height:18px; }
+.option:has(input:checked) { border-color:var(--teal); background:var(--soft); }
+.option.correct { border:2px solid var(--teal); }
+.option.incorrect { border:2px solid var(--orange); }
+fieldset:disabled .option { cursor:default; }
+.answer-note { font-size:.9rem; padding:12px 16px; border-left:3px solid var(--teal); background:var(--soft); margin-top:12px; }
+.error { color:#932c19; font-weight:700; }
+.quiz-actions { display:flex; gap:12px; flex-wrap:wrap; }
+#results { margin-top:24px; background:var(--soft); padding:22px; border-radius:10px; }
+#results h3 { font-size:1.2rem; }
+[hidden] { display:none !important; }
+@media (max-width:800px) { .grid { grid-template-columns:1fr; } .lesson-layout { grid-template-columns:1fr; gap:24px; } .contents { position:static; } .contents ol { display:flex; flex-wrap:wrap; gap:8px 30px; } .contents li { margin:0; } .habits { grid-template-columns:1fr; } .cta { align-items:flex-start; flex-direction:column; } }
+@media (max-width:480px) { .wrap { padding:0 20px; } .header-inner { min-height:90px; gap:12px; } .class-label { max-width:120px; font-size:.75rem; text-align:right; } .hero { padding-top:40px; } .card { padding:22px; } .sim-label { margin:-22px -22px 22px; padding:12px 22px; } .section-top { display:block; } .section { margin-top:40px; } }
+</style>
 </head>
 <body>
-  <div class="header">
-    <h1>🛡️ Stay Safe Online: Phishing Safety Lesson</h1>
-    <div class="subtitle">Mr. Makedon's Class — Learn to Spot Scams</div>
+<a class="skip" href="#">Skip to lesson content</a>
+<header><div class="wrap header-inner">
+  <div class="brand"><span class="brand-icon" aria-hidden="true">✓</span><span>Account<br>Security Lab</span></div>
+  <span class="class-label">Mr. Makedon's classroom</span>
+</div></header>
+<main id="main" class="wrap" tabindex="-1">
+<section class="hero" aria-labelledby="lesson-title">
+  <p class="eyebrow">02 / Learn the habits</p>
+  <h1 id="lesson-title">Keep access.<br><em>Keep control.</em></h1>
+  <p class="lead">Account security means protecting how you sign in, noticing when something is wrong, and knowing how to get help.</p>
+  <div class="meta"><span class="pill">Read · Discuss · Practice</span><span class="pill">6-question check</span><span class="pill">No account details needed</span></div>
+</section>
+<div class="lesson-layout">
+  <aside class="contents" aria-label="Lesson overview"><p>Today's learning goals</p><ol><li>Protect your sign-in.</li><li>Verify before acting.</li><li>Recover and report.</li></ol><p class="notice">Practice with fictional examples only. Do not change school account settings during class unless your teacher directs you.</p></aside>
+  <div>
+    <section class="card lesson-block" aria-labelledby="passwords-title">
+      <p class="number">01 / Strong sign-ins</p><h2 id="passwords-title">One account, one password.</h2>
+      <p>Reusing a password means a leak at one service can put other accounts at risk. Use a different, long password for every account. Aim for at least 16 characters where supported.</p>
+      <ul><li>Let a trusted password manager generate and store unique passwords. Follow your school's approved tools and rules.</li><li>If you need to memorize a password, use a long passphrase made from unrelated, randomly chosen words. Avoid names, birthdays, and common sayings.</li><li>Never share passwords in messages, with friends, or with someone claiming to be support.</li></ul>
+      <p class="notice"><strong>Talk it through:</strong> Why could using the same password for a game and your email put both accounts at risk? Don't share any real passwords.</p>
+    </section>
+    <section class="card lesson-block" aria-labelledby="mfa-title">
+      <p class="number">02 / Another layer</p><h2 id="mfa-title">Use MFA. Consider a passkey.</h2>
+      <p><strong>Multifactor authentication (MFA)</strong> adds another kind of proof, such as a security key or a code from an authenticator app, alongside your password. Use it wherever it is available.</p>
+      <p><strong>Passkeys</strong> let you sign in using your device's screen lock, such as a PIN, fingerprint, or face check. They are tied to the real service, which helps resist fake sign-in pages. Use them on personal or school-approved devices, and learn the recovery process.</p>
+      <p>Never send a one-time code to another person. Enter it only during a sign-in you started at the real service. Deny and report approval prompts you did not initiate. Repeated prompts are a reason to get help, not to tap “approve.”</p>
+    </section>
+    <section class="card lesson-block" aria-labelledby="phishing-title">
+      <p class="number">03 / Pause and verify</p><h2 id="phishing-title">A convincing message is not proof.</h2>
+      <p><strong>Phishing</strong> is an attempt to trick you into sharing information or taking an unsafe action by pretending to be someone you trust. It can arrive by email, text, chat, a QR code, or a phone call.</p>
+      <p>Watch for unexpected requests, rewards, pressure, attachments, and requests for secrets. Correct spelling, a familiar logo, or a calm tone cannot prove a message is genuine. Even a friend's account can be compromised.</p>
+      <div class="example"><h3>Inspect the details</h3><p>A sender such as <code>netfl1x-support@random-site.com</code> does not match the service it claims to represent.</p><p>In <code>roblox-security.fake-site.com</code>, the familiar brand is only part of a different site's address. Do not visit this example.</p><p><code>https://</code> means the connection is encrypted. A scam site can use it too.</p></div>
+      <p class="notice"><strong>Safer next step:</strong> Open the official app or a known bookmark to check the claim. Contact a teacher, school IT, or the organization through contact details you already trust. Report the message using the approved reporting tool, then delete it.</p>
+    </section>
+    <section class="card lesson-block" aria-labelledby="devices-title">
+      <p class="number">04 / Daily habits</p><h2 id="devices-title">Protect the device, too.</h2>
+      <ul><li>Lock your screen when you step away. Keep your device and apps updated.</li><li>On shared computers, sign out of accounts when finished. Closing a tab may leave you signed in.</li><li>Do not save passwords or create personal passkeys on a shared classroom device.</li><li>Install apps and extensions only from approved sources. Ask before granting account access to an unfamiliar app.</li></ul>
+    </section>
+    <section class="card lesson-block" aria-labelledby="recover-title">
+      <p class="number">05 / Your recovery plan</p><h2 id="recover-title">If something happened, get help.</h2>
+      <p>Mistakes happen. Reporting quickly helps protect you and others. You do not need to solve it alone.</p>
+      <ol><li><strong>Stop interacting.</strong> Do not send more information, approve prompts, or open downloaded files. Tell a trusted adult or school IT promptly.</li><li><strong>Use the real service.</strong> From a trusted device, open its official app or known address. If you shared a password, change it there; change it anywhere else you reused it. If locked out, use official account recovery.</li><li><strong>Review access with help.</strong> Sign out other sessions, check recovery details and connected apps, and remove anything unfamiliar. A password change may not end every existing session.</li><li><strong>Strengthen recovery.</strong> Set up MFA or a passkey where allowed. Keep recovery contact details current and backup codes somewhere private and secure. Never share those codes in a message.</li></ol>
+      <p class="notice">If you only clicked a link, that does not automatically mean your account was taken over. Describe what happened to the adult or IT staff helping you. If you downloaded or ran a file, tell them that too.</p>
+    </section>
+    <section class="card lesson-block" aria-labelledby="quiz-title">
+      <p class="number">06 / Knowledge check</p><h2 id="quiz-title">Choose the safer next step.</h2>
+      <p>Answer all six questions, then check your reasoning. Your score stays on this page and is not sent to your teacher.</p>
+      <noscript><p class="notice">Enable JavaScript for quiz grading. You can still discuss the questions below and use the lesson to explain each answer.</p></noscript>
+      <form id="quiz" novalidate>
+        <fieldset id="question1"><legend>1. Why use a different password for every account?</legend><label class="option" for="q1a"><input id="q1a" type="radio" name="q1" value="a" required><span>It keeps a leak at one service from exposing the same password elsewhere.</span></label><label class="option" for="q1b"><input id="q1b" type="radio" name="q1" value="b" required><span>It means you no longer need any other protection.</span></label><label class="option" for="q1c"><input id="q1c" type="radio" name="q1" value="c" required><span>It makes short, easy-to-guess passwords safe.</span></label><p id="explanation1" class="answer-note" hidden></p></fieldset>
+<fieldset id="question2"><legend>2. A message asks for the sign-in code from your phone. What should you do?</legend><label class="option" for="q2a"><input id="q2a" type="radio" name="q2" value="a" required><span>Send it if the sender uses a familiar logo.</span></label><label class="option" for="q2b"><input id="q2b" type="radio" name="q2" value="b" required><span>Keep it private and verify through the official app or a known contact.</span></label><label class="option" for="q2c"><input id="q2c" type="radio" name="q2" value="c" required><span>Send half the code first.</span></label><p id="explanation2" class="answer-note" hidden></p></fieldset>
+<fieldset id="question3"><legend>3. A page uses https:// and looks professional. What does that tell you?</legend><label class="option" for="q3a"><input id="q3a" type="radio" name="q3" value="a" required><span>The service has checked that the sender is honest.</span></label><label class="option" for="q3b"><input id="q3b" type="radio" name="q3" value="b" required><span>Every link on the page is safe.</span></label><label class="option" for="q3c"><input id="q3c" type="radio" name="q3" value="c" required><span>The connection is encrypted, but the page could still be a scam.</span></label><p id="explanation3" class="answer-note" hidden></p></fieldset>
+<fieldset id="question4"><legend>4. You receive an MFA approval prompt while you are not signing in. What next?</legend><label class="option" for="q4a"><input id="q4a" type="radio" name="q4" value="a" required><span>Approve it to make the notification stop.</span></label><label class="option" for="q4b"><input id="q4b" type="radio" name="q4" value="b" required><span>Deny it and tell a trusted adult or school IT.</span></label><label class="option" for="q4c"><input id="q4c" type="radio" name="q4" value="c" required><span>Ask a friend to approve it for you.</span></label><p id="explanation4" class="answer-note" hidden></p></fieldset>
+<fieldset id="question5"><legend>5. You shared a password on a suspicious page. What is the best response?</legend><label class="option" for="q5a"><input id="q5a" type="radio" name="q5" value="a" required><span>Wait to see whether anything happens.</span></label><label class="option" for="q5b"><input id="q5b" type="radio" name="q5" value="b" required><span>Delete the message and keep it a secret.</span></label><label class="option" for="q5c"><input id="q5c" type="radio" name="q5" value="c" required><span>Get help now, change it through the real service, and review account access.</span></label><p id="explanation5" class="answer-note" hidden></p></fieldset>
+<fieldset id="question6"><legend>6. You finish using a shared classroom computer. What should you do?</legend><label class="option" for="q6a"><input id="q6a" type="radio" name="q6" value="a" required><span>Sign out of accounts and avoid saving passwords or personal passkeys there.</span></label><label class="option" for="q6b"><input id="q6b" type="radio" name="q6" value="b" required><span>Close the tab; that always signs you out.</span></label><label class="option" for="q6c"><input id="q6c" type="radio" name="q6" value="c" required><span>Save your password so the next sign-in is easier.</span></label><p id="explanation6" class="answer-note" hidden></p></fieldset>
+        <p id="quizError" class="error" role="alert"></p>
+        <div class="quiz-actions"><button class="button" id="submitQuiz" type="submit" hidden>Check my answers</button><button class="button secondary" id="retryQuiz" type="reset" hidden>Try again</button></div>
+      </form>
+      <div id="results" hidden><h3 id="score" tabindex="-1"></h3><p id="feedback"></p></div>
+    </section>
+    <section class="card lesson-block" aria-labelledby="exit-title"><p class="number">Before you go</p><h2 id="exit-title">Your exit ticket</h2><p>Tell a partner one habit you can use, one warning sign you would check, and one person you could ask for help. Keep personal account details private.</p><p class="small">Teacher reference: CISA's Secure Our World guidance and FIDO Alliance's passkey guidance.</p></section>
+    <a class="back-link" href="index.html">← Back to the message simulation</a>
   </div>
+</div>
+</main>
+<footer><div class="wrap">Classroom practice · No real passwords, codes, or account details. Nothing you answer here is saved or sent.</div></footer>
+<script>
+// Preserve existing link destinations; move focus for keyboard navigation locally.
+document.querySelector('.skip').addEventListener('click', (event) => {
+  event.preventDefault();
+  document.getElementById('main').focus();
+  document.getElementById('main').scrollIntoView();
+});
 
-  <div class="content">
-    <!-- Lesson Content -->
-    <div class="lesson-section">
-      <h2>What is Phishing?</h2>
-      <p>
-        <strong>Phishing</strong> is when bad people pretend to be someone you trust to trick you. They want to steal your passwords, personal information, or money. The word "phishing" sounds like "fishing" because scammers are trying to "catch" you with fake bait!
-      </p>
-      <p>
-        Phishing can happen through emails, text messages, pop-ups, or even fake websites. The goal is always the same: to trick you into giving away important information or clicking on dangerous links.
-      </p>
-    </div>
+const answerKey = [{"correct": "a", "explanation": "Unique passwords limit the damage from password reuse. Use long passwords and a trusted password manager, plus MFA where available."}, {"correct": "b", "explanation": "A one-time code can let someone sign in as you. Never send it to another person; use it only in a sign-in you started at the real service."}, {"correct": "c", "explanation": "Encryption protects the connection. It does not prove the site's identity is the one you expect or that its content is trustworthy."}, {"correct": "b", "explanation": "Only approve sign-ins you initiate. An unexpected prompt may mean someone is trying to access your account; deny it and get help."}, {"correct": "c", "explanation": "Prompt reporting helps. Use a trusted device and the real service, replace reused passwords, and review sessions, recovery details, and connected apps with help."}, {"correct": "a", "explanation": "Closing a tab may leave a session active. Sign out on shared devices and keep your personal sign-in credentials off them."}];
+const quiz = document.getElementById('quiz');
+const submitButton = document.getElementById('submitQuiz');
+const retryButton = document.getElementById('retryQuiz');
+const results = document.getElementById('results');
+const error = document.getElementById('quizError');
+submitButton.hidden = false;
+quiz.addEventListener('submit', event => {
+  event.preventDefault();
+  if (submitButton.disabled) return;
+  const missing = answerKey.findIndex((_, i) => !quiz.querySelector(`input[name="q${i + 1}"]:checked`));
+  if (missing !== -1) {
+    error.textContent = `Answer all six questions first. Question ${missing + 1} still needs an answer.`;
+    quiz.querySelector(`input[name="q${missing + 1}"]`).focus();
+    return;
+  }
+  error.textContent = '';
+  let score = 0;
+  answerKey.forEach((answer, i) => {
+    const n = i + 1;
+    const selected = quiz.querySelector(`input[name="q${n}"]:checked`);
+    const correct = quiz.querySelector(`input[name="q${n}"][value="${answer.correct}"]`);
+    const isCorrect = selected.value === answer.correct;
+    if (isCorrect) score++;
+    correct.closest('label').classList.add('correct');
+    if (!isCorrect) selected.closest('label').classList.add('incorrect');
+    const note = document.getElementById(`explanation${n}`);
+    note.textContent = `${isCorrect ? 'Correct.' : 'Review this one.'} Best answer: ${correct.nextElementSibling.textContent} ${answer.explanation}`;
+    note.hidden = false;
+    document.getElementById(`question${n}`).disabled = true;
+  });
+  document.getElementById('score').textContent = `You got ${score} out of ${answerKey.length} correct.`;
+  document.getElementById('feedback').textContent = score === answerKey.length
+    ? 'You identified the safer choices. Explain one answer to a partner, then choose a habit for your exit ticket.'
+    : 'Read the explanation below each question, then try again. Practice is how these habits become easier.';
+  results.hidden = false;
+  submitButton.disabled = true;
+  retryButton.hidden = false;
+  document.getElementById('score').focus();
+});
+quiz.addEventListener('reset', () => {
+  quiz.querySelectorAll('fieldset').forEach(fieldset => { fieldset.disabled = false; });
+  quiz.querySelectorAll('label').forEach(label => { label.classList.remove('correct', 'incorrect'); });
+  quiz.querySelectorAll('.answer-note').forEach(note => { note.hidden = true; note.textContent = ''; });
+  error.textContent = '';
+  results.hidden = true;
+  submitButton.disabled = false;
+  retryButton.hidden = true;
+  quiz.querySelector('input').focus();
+});
 
-    <div class="lesson-section">
-      <h2>How Does Phishing Work?</h2>
-      <p>Scammers use tricks to make you act quickly without thinking. Here's how they do it:</p>
-      
-      <h3>1. They Pretend to Be Someone You Know</h3>
-      <p>
-        Scammers might pretend to be your bank, a popular website like YouTube, or even your school. They use logos and colors that look real to fool you.
-      </p>
-
-      <h3>2. They Create Urgency</h3>
-      <p>
-        They say things like "ACT NOW!" or "Your account will be closed in 24 hours!" They want you to panic and click without thinking.
-      </p>
-
-      <h3>3. They Offer Prizes or Gifts</h3>
-      <p>
-        Messages like "You won a free phone!" or "Click here for a gift card!" are almost always scams. If it sounds too good to be true, it probably is!
-      </p>
-
-      <h3>4. They Use Scary Warnings</h3>
-      <p>
-        They might say "Your computer has a virus!" or "Your password was stolen!" to make you scared and click their dangerous links.
-      </p>
-    </div>
-
-    <div class="lesson-section">
-      <h2>Red Flags: Warning Signs of Phishing</h2>
-      <p>Here are the biggest clues that something might be a phishing scam:</p>
-
-      <div class="red-flag">
-        <strong>🚩 Strange Email Addresses</strong><br>
-        Real companies use professional email addresses. If an email says it's from Netflix but comes from "netfl1x-support@random-site.com," it's fake!
-      </div>
-
-      <div class="red-flag">
-        <strong>🚩 Spelling and Grammar Mistakes</strong><br>
-        Real companies check their messages carefully. Lots of typos and weird sentences are warning signs.
-      </div>
-
-      <div class="red-flag">
-        <strong>🚩 Suspicious Links</strong><br>
-        Before clicking a link, hover your mouse over it. Does the web address look strange or misspelled? Don't click it!
-      </div>
-
-      <div class="red-flag">
-        <strong>🚩 Asking for Personal Information</strong><br>
-        Real companies will NEVER ask for your password, Social Security number, or credit card info through email or text.
-      </div>
-
-      <div class="red-flag">
-        <strong>🚩 Urgent or Threatening Language</strong><br>
-        Messages that pressure you to "act now" or threaten to close your account are trying to stop you from thinking clearly.
-      </div>
-
-      <div class="red-flag">
-        <strong>🚩 Unexpected Attachments</strong><br>
-        Don't open attachments from people you don't know. They could contain viruses!
-      </div>
-    </div>
-
-    <div class="lesson-section">
-      <h2>How to Protect Yourself</h2>
-      
-      <div class="tip-box">
-        <strong>💡 TIP:</strong> Think before you click! Take a few seconds to ask yourself: "Does this seem real?"
-      </div>
-
-      <h3>What You Should Do:</h3>
-      <ul>
-        <li><strong>Check the sender:</strong> Look closely at email addresses and website URLs</li>
-        <li><strong>Don't click suspicious links:</strong> If you're not sure, don't click it</li>
-        <li><strong>Never share passwords:</strong> Not in emails, texts, or pop-ups</li>
-        <li><strong>Ask an adult:</strong> If something seems weird, get help from a parent or teacher</li>
-        <li><strong>Use strong passwords:</strong> Make them long and different for each account</li>
-        <li><strong>Keep software updated:</strong> Updates often include security fixes</li>
-      </ul>
-
-      <h3>What You Should NOT Do:</h3>
-      <ul>
-        <li>Don't panic when you see urgent messages</li>
-        <li>Don't click on links in unexpected emails or texts</li>
-        <li>Don't download files from people you don't know</li>
-        <li>Don't give out personal information online</li>
-      </ul>
-    </div>
-
-    <div class="lesson-section">
-      <h2>Real vs. Fake: Examples</h2>
-      
-      <h3>FAKE Message:</h3>
-      <div style="background:#7f1d1d; padding:12px; border-radius:6px; margin:12px 0;">
-        <p style="margin:0;">
-          "URGENT! Your Roblox account will be deleted in 1 hour! Click here now to save it: roblox-security.fake-site.com"
-        </p>
-      </div>
-      <p><strong>Red flags:</strong> Creates urgency, suspicious link, threatening language</p>
-
-      <h3>REAL Message:</h3>
-      <div style="background:#064e3b; padding:12px; border-radius:6px; margin:12px 0;">
-        <p style="margin:0;">
-          "Hi! We noticed a new login to your account. If this wasn't you, please visit our official website to change your password."
-        </p>
-      </div>
-      <p><strong>Why it's safer:</strong> No urgent threats, tells you to go to the official website (not a link), calm tone</p>
-    </div>
-
-    <!-- Quiz Section -->
-    <div class="quiz-section">
-      <h2>📝 Quiz: Test Your Knowledge!</h2>
-      <p>Answer these 5 questions to see how much you learned. Choose the best answer for each question.</p>
-
-      <div class="question">
-        <h3>Question 1: What is phishing?</h3>
-        <div class="options">
-          <div class="option" data-question="1" data-answer="a">A) A type of sport involving fish</div>
-          <div class="option" data-question="1" data-answer="b">B) When scammers trick you into giving personal information</div>
-          <div class="option" data-question="1" data-answer="c">C) A safe way to shop online</div>
-          <div class="option" data-question="1" data-answer="d">D) A new video game</div>
-        </div>
-      </div>
-
-      <div class="question">
-        <h3>Question 2: Which of these is a red flag for phishing?</h3>
-        <div class="options">
-          <div class="option" data-question="2" data-answer="a">A) An email with perfect spelling from your school</div>
-          <div class="option" data-question="2" data-answer="b">B) A message saying "ACT NOW or lose your account!"</div>
-          <div class="option" data-question="2" data-answer="c">C) A text from your parent's phone number</div>
-          <div class="option" data-question="2" data-answer="d">D) A website with "https://" at the beginning</div>
-        </div>
-      </div>
-
-      <div class="question">
-        <h3>Question 3: You get an email saying you won a free iPad. What should you do?</h3>
-        <div class="options">
-          <div class="option" data-question="3" data-answer="a">A) Click the link immediately to claim it</div>
-          <div class="option" data-question="3" data-answer="b">B) Share it with all your friends</div>
-          <div class="option" data-question="3" data-answer="c">C) Delete it or show it to an adult - it's probably a scam</div>
-          <div class="option" data-question="3" data-answer="d">D) Reply with your home address</div>
-        </div>
-      </div>
-
-      <div class="question">
-        <h3>Question 4: A pop-up says your computer has a virus and to download a fix. What's true?</h3>
-        <div class="options">
-          <div class="option" data-question="4" data-answer="a">A) You should download the fix right away</div>
-          <div class="option" data-question="4" data-answer="b">B) This is likely a scam trying to install actual viruses</div>
-          <div class="option" data-question="4" data-answer="c">C) Pop-ups are always telling the truth</div>
-          <div class="option" data-question="4" data-answer="d">D) You should call the phone number they provide</div>
-        </div>
-      </div>
-
-      <div class="question">
-        <h3>Question 5: What's the best thing to do if you're not sure if a message is real?</h3>
-        <div class="options">
-          <div class="option" data-question="5" data-answer="a">A) Click the link to find out</div>
-          <div class="option" data-question="5" data-answer="b">B) Ignore it and hope it goes away</div>
-          <div class="option" data-question="5" data-answer="c">C) Ask a trusted adult like a parent or teacher</div>
-          <div class="option" data-question="5" data-answer="d">D) Reply asking if they're a scammer</div>
-        </div>
-      </div>
-
-      <button class="submit-btn" id="submitQuiz">Submit Quiz</button>
-
-      <div class="results" id="results">
-        <h3>Your Results</h3>
-        <p id="score"></p>
-        <p id="feedback"></p>
-      </div>
-    </div>
-
-    <a class="back-link" href="index.html">← Back to Phishing Demo</a>
-  </div>
-
-  <script>
-    const correctAnswers = {
-      1: 'b',
-      2: 'b',
-      3: 'c',
-      4: 'b',
-      5: 'c'
-    };
-
-    const userAnswers = {};
-
-    // Handle option selection
-    document.querySelectorAll('.option').forEach(option => {
-      option.addEventListener('click', function() {
-        const question = this.dataset.question;
-        const answer = this.dataset.answer;
-        
-        // Deselect other options in same question
-        document.querySelectorAll(`[data-question="${question}"]`).forEach(opt => {
-          opt.classList.remove('selected');
-        });
-        
-        // Select this option
-        this.classList.add('selected');
-        userAnswers[question] = answer;
-      });
-    });
-
-    // Handle quiz submission
-    document.getElementById('submitQuiz').addEventListener('click', function() {
-      // Check if all questions answered
-      if (Object.keys(userAnswers).length < 5) {
-        alert('Please answer all questions before submitting!');
-        return;
-      }
-
-      // Calculate score
-      let correct = 0;
-      for (let q = 1; q <= 5; q++) {
-        if (userAnswers[q] === correctAnswers[q]) {
-          correct++;
-          // Mark correct answers
-          document.querySelector(`[data-question="${q}"][data-answer="${correctAnswers[q]}"]`).classList.add('correct');
-        } else {
-          // Mark incorrect answers
-          document.querySelector(`[data-question="${q}"][data-answer="${userAnswers[q]}"]`).classList.add('incorrect');
-          // Also show the correct answer
-          document.querySelector(`[data-question="${q}"][data-answer="${correctAnswers[q]}"]`).classList.add('correct');
-        }
-      }
-
-      // Show results
-      const resultsDiv = document.getElementById('results');
-      const scoreText = document.getElementById('score');
-      const feedbackText = document.getElementById('feedback');
-
-      scoreText.textContent = `You got ${correct} out of 5 questions correct!`;
-
-      if (correct === 5) {
-        feedbackText.textContent = '🎉 Perfect score! You really know how to stay safe from phishing scams!';
-      } else if (correct >= 3) {
-        feedbackText.textContent = '👍 Good job! You understand the basics. Review the red flags to get even better!';
-      } else {
-        feedbackText.textContent = '📚 Keep learning! Read through the lesson again to learn more about staying safe online.';
-      }
-
-      resultsDiv.classList.add('show');
-      this.disabled = true;
-
-      // Disable all options after submission
-      document.querySelectorAll('.option').forEach(opt => {
-        opt.style.cursor = 'default';
-        opt.onclick = null;
-      });
-    });
-  </script>
+</script>
 </body>
 </html>

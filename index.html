@@ -1,152 +1,188 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Phishy Gift — DEMO for Mr. Makedon’s Class</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Mr. Makedon's classroom lesson: protect your accounts, recognize phishing, and practice safer decisions. No account details needed.">
+  <title>Account Security Lab — Mr. Makedon's Class</title>
   <style>
-    body {
-      margin:0;
-      font-family: Arial, sans-serif;
-      background:#0a0a0a;
-      color:#e5e7eb;
-    }
-    .header {
-      text-align:center;
-      padding:20px;
-      background:#111;
-      border-bottom:3px solid red;
-      position:relative;
-    }
-    .flash {
-      position:absolute;
-      width:16px;
-      height:16px;
-      border-radius:50%;
-      background:red;
-      box-shadow:0 0 15px red;
-      animation: blink 0.7s infinite alternate;
-    }
-    .flash.left {left:20px; top:20px;}
-    .flash.right {right:20px; top:20px;}
-    @keyframes blink {
-      from {opacity:.2; transform:scale(.9);}
-      to {opacity:1; transform:scale(1);}
-    }
-    h1 {margin:0; font-size:28px; color:#fca5a5;}
-    .subtitle {font-size:14px; opacity:.85;}
-    .content {
-      max-width:700px;
-      margin:30px auto;
-      background:#141414;
-      border:2px solid red;
-      padding:20px;
-      border-radius:12px;
-      text-align:center;
-    }
-    .warning {
-      background:#ff3b3b;
-      color:#111;
-      font-weight:700;
-      text-transform:uppercase;
-      padding:8px;
-      border-radius:8px;
-      margin-bottom:16px;
-      animation: pulse 1s infinite;
-    }
-    @keyframes pulse {
-      50% {transform:scale(1.05);}
-    }
-    .fake-offer {
-      background:#1f2937;
-      padding:16px;
-      border-radius:10px;
-      border:1px solid #374151;
-      margin-bottom:20px;
-    }
-    .fake-offer a {
-      color:#93c5fd;
-      text-decoration:underline;
-      font-weight:700;
-      cursor:pointer;
-    }
-    .scary-buttons {
-      display:flex;
-      justify-content:center;
-      gap:20px;
-      flex-wrap:wrap;
-      margin-top:20px;
-    }
-    .scary-btn {
-      padding:16px 28px;
-      font-size:18px;
-      font-weight:900;
-      color:#111;
-      border:none;
-      border-radius:12px;
-      cursor:pointer;
-      text-transform:uppercase;
-      letter-spacing:1px;
-      animation: shake 0.5s infinite;
-    }
-    .scary-btn.red { background:#ff0000; box-shadow:0 0 15px #ff0000; }
-    .scary-btn.yellow { background:#ffea00; box-shadow:0 0 15px #ffea00; }
-    @keyframes shake {
-      0% {transform:translate(1px, 1px) rotate(0deg);}
-      20% {transform:translate(-2px, 0px) rotate(-2deg);}
-      40% {transform:translate(2px, 1px) rotate(2deg);}
-      60% {transform:translate(-1px, -1px) rotate(0deg);}
-      80% {transform:translate(1px, 2px) rotate(2deg);}
-      100% {transform:translate(0px, -1px) rotate(-2deg);}
-    }
-    .demo-note { font-size:13px; margin-top:14px; opacity:.8; }
-    .lesson-link { margin-top:20px; display:block; font-size:16px; color:#93c5fd; text-decoration:underline; }
-  </style>
+:root { color-scheme: light; --paper:#f6f5f0; --ink:#182e36; --muted:#4d636b; --teal:#08675b; --line:#d7ded8; --soft:#e7eee7; --white:#fff; --orange:#9c3c23; }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--paper); color:var(--ink); font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; line-height:1.65; }
+a { color:var(--teal); text-underline-offset:4px; }
+button,input { font:inherit; }
+button,a,input,summary { -webkit-tap-highlight-color:transparent; }
+:focus-visible { outline:3px solid #9c3c23; outline-offset:5px; }
+.skip { position:absolute; left:16px; top:-100px; z-index:5; background:var(--white); padding:12px; }
+.skip:focus { top:12px; }
+.wrap { max-width:1120px; margin:auto; padding:0 32px; }
+header { border-bottom:1px solid var(--line); }
+.header-inner { min-height:96px; display:flex; align-items:center; justify-content:space-between; gap:24px; }
+.brand { display:flex; align-items:center; gap:12px; font-size:.8rem; font-weight:800; letter-spacing:.1em; text-transform:uppercase; line-height:1.35; }
+.brand-icon { display:grid; place-items:center; width:42px; height:46px; color:white; background:var(--teal); border-radius:12px 12px 18px 18px; font-size:1.4rem; }
+.class-label { font-size:.85rem; color:var(--muted); }
+.hero { padding:64px 0 40px; }
+.eyebrow { margin:0 0 18px; color:var(--teal); font-size:.76rem; font-weight:800; letter-spacing:.13em; text-transform:uppercase; }
+h1 { max-width:850px; margin:0 0 22px; font-size:clamp(2.5rem,6.2vw,4.8rem); line-height:1.05; letter-spacing:-.055em; font-weight:750; }
+h1 em { font-style:normal; color:var(--teal); }
+.lead { max-width:650px; font-size:1.14rem; color:var(--muted); }
+.meta { display:flex; gap:10px; flex-wrap:wrap; margin-top:24px; }
+.pill { border:1px solid var(--line); border-radius:30px; padding:5px 12px; font-size:.78rem; font-weight:650; background:var(--white); }
+.grid { display:grid; grid-template-columns:1.05fr 1fr; gap:28px; align-items:start; }
+.card { background:var(--white); border:1px solid var(--line); border-radius:18px; padding:30px; }
+h2 { font-size:1.7rem; line-height:1.2; letter-spacing:-.03em; margin:0 0 18px; }
+h3 { font-size:1.05rem; line-height:1.45; margin:0 0 10px; }
+p { margin:0 0 16px; }
+p:last-child { margin-bottom:0; }
+.sim-label { color:var(--orange); background:#fff0e8; border-bottom:1px solid #ead4c8; margin:-30px -30px 24px; padding:14px 30px; border-radius:18px 18px 0 0; font-size:.75rem; font-weight:800; letter-spacing:.08em; text-transform:uppercase; }
+.sender { display:flex; gap:12px; align-items:center; padding-bottom:20px; border-bottom:1px solid var(--line); margin-bottom:22px; }
+.avatar { display:grid; place-items:center; width:42px; height:42px; background:var(--soft); border-radius:50%; flex-shrink:0; font-weight:800; }
+.small { font-size:.85rem; color:var(--muted); }
+.message { padding:18px; background:#f7f8f6; border-radius:10px; border:1px solid var(--line); }
+.message a { font-weight:700; overflow-wrap:anywhere; }
+.notice { padding:14px 18px; border-left:3px solid var(--teal); background:var(--soft); border-radius:0 8px 8px 0; font-size:.9rem; margin-top:22px; }
+.choices { display:grid; gap:10px; margin:22px 0; }
+button { cursor:pointer; }
+.choice { text-align:left; border:1px solid #acbbb5; border-radius:9px; padding:14px 16px; background:var(--white); color:var(--ink); font-weight:650; min-height:48px; }
+.choice:hover { border-color:var(--teal); background:var(--soft); }
+.choice[aria-pressed="true"] { border:2px solid var(--teal); padding:13px 15px; background:var(--soft); }
+.feedback { padding:16px 18px; background:var(--soft); border-radius:9px; margin:16px 0; }
+.feedback:empty { display:none; }
+details { margin-top:24px; border-top:1px solid var(--line); padding-top:18px; }
+summary { cursor:pointer; font-weight:750; color:var(--teal); }
+details ul { padding-left:20px; }
+li { margin:10px 0; }
+.section { margin-top:56px; }
+.section-top { display:flex; justify-content:space-between; align-items:baseline; gap:20px; }
+.section-top p { color:var(--muted); font-size:.9rem; }
+.habits { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+.number { font-size:.78rem; color:var(--teal); font-weight:800; letter-spacing:.08em; margin-bottom:16px; }
+.habits .card { padding:24px; }
+.habits p { font-size:.95rem; color:var(--muted); }
+.cta { margin:40px 0 16px; border-radius:16px; padding:28px; background:var(--ink); color:white; display:flex; justify-content:space-between; align-items:center; gap:24px; }
+.cta h2 { font-size:1.4rem; margin-bottom:8px; }
+.cta p { color:#dce5df; font-size:.9rem; }
+.button { display:inline-block; padding:12px 20px; background:var(--teal); color:white; border:0; border-radius:8px; text-decoration:none; font-weight:750; white-space:normal; text-align:center; min-height:48px; }
+.cta .button { background:#d8efb0; color:var(--ink); flex-shrink:0; }
+.button:hover { filter:brightness(.92); }
+.secondary { background:var(--soft); color:var(--ink); }
+footer { padding:28px 0; margin-top:32px; color:var(--muted); border-top:1px solid var(--line); font-size:.8rem; }
+.lesson-layout { display:grid; grid-template-columns:220px minmax(0,1fr); gap:44px; }
+.contents { position:sticky; top:24px; font-size:.9rem; }
+.contents ol { margin:0; padding-left:20px; }
+.contents p { font-weight:750; }
+.lesson-block { margin-bottom:22px; scroll-margin-top:24px; }
+.lesson-block h2 { font-size:1.45rem; }
+.lesson-block .number { margin-bottom:10px; }
+.lesson-block ul,.lesson-block ol { padding-left:22px; }
+.example { margin-top:18px; border:1px solid var(--line); padding:16px; border-radius:9px; overflow-wrap:anywhere; }
+.example p { margin-bottom:10px; }
+.example p:last-child { margin:0; }
+code { font-family:ui-monospace,SFMono-Regular,monospace; font-size:.9em; overflow-wrap:anywhere; }
+fieldset { min-width:0; padding:0; border:0; margin:28px 0; }
+legend { font-weight:750; padding:0; margin-bottom:10px; line-height:1.5; }
+.option { display:flex; align-items:flex-start; gap:12px; border:1px solid var(--line); border-radius:8px; margin:8px 0; padding:12px; cursor:pointer; }
+.option:hover { background:var(--paper); }
+.option input { margin:6px 0 0; flex-shrink:0; accent-color:var(--teal); width:18px; height:18px; }
+.option:has(input:checked) { border-color:var(--teal); background:var(--soft); }
+.option.correct { border:2px solid var(--teal); }
+.option.incorrect { border:2px solid var(--orange); }
+fieldset:disabled .option { cursor:default; }
+.answer-note { font-size:.9rem; padding:12px 16px; border-left:3px solid var(--teal); background:var(--soft); margin-top:12px; }
+.error { color:#932c19; font-weight:700; }
+.quiz-actions { display:flex; gap:12px; flex-wrap:wrap; }
+#results { margin-top:24px; background:var(--soft); padding:22px; border-radius:10px; }
+#results h3 { font-size:1.2rem; }
+[hidden] { display:none !important; }
+@media (max-width:800px) { .grid { grid-template-columns:1fr; } .lesson-layout { grid-template-columns:1fr; gap:24px; } .contents { position:static; } .contents ol { display:flex; flex-wrap:wrap; gap:8px 30px; } .contents li { margin:0; } .habits { grid-template-columns:1fr; } .cta { align-items:flex-start; flex-direction:column; } }
+@media (max-width:480px) { .wrap { padding:0 20px; } .header-inner { min-height:90px; gap:12px; } .class-label { max-width:120px; font-size:.75rem; text-align:right; } .hero { padding-top:40px; } .card { padding:22px; } .sim-label { margin:-22px -22px 22px; padding:12px 22px; } .section-top { display:block; } .section { margin-top:40px; } }
+</style>
 </head>
 <body>
-  <div class="header">
-    <div class="flash left"></div>
-    <div class="flash right"></div>
-    <h1>Mr. Makedon’s Phishing Demo</h1>
-    <div class="subtitle">This is an educational simulation. No real danger!</div>
-  </div>
-
-  <div class="content">
-    <div class="warning">⚠ Warning — Demonstration Only ⚠</div>
-    <p>Here’s an example of what a suspicious pop-up might look like.</p>
-    <div class="fake-offer">
-      <p><em>“Hello, I’ve got a nice gift for you, just click this link.”</em></p>
-      <p>
-        <a id="fakeLink" href="#">example.com/gift</a>
-        <small>(Disabled — this is a classroom demo)</small>
-      </p>
+<a class="skip" href="#">Skip to lesson content</a>
+<header><div class="wrap header-inner">
+  <div class="brand"><span class="brand-icon" aria-hidden="true">✓</span><span>Account<br>Security Lab</span></div>
+  <span class="class-label">Mr. Makedon's classroom</span>
+</div></header>
+<main id="main" class="wrap" tabindex="-1">
+<section class="hero" aria-labelledby="intro-title">
+  <p class="eyebrow">01 / Practice the pause</p>
+  <h1 id="intro-title">Your account.<br><em>Your control.</em></h1>
+  <p class="lead">A message wants you to act fast. Your best move? Slow down. Practice spotting the pressure, then learn how to keep your accounts secure.</p>
+  <div class="meta"><span class="pill">About 20 minutes</span><span class="pill">Classroom simulation</span><span class="pill">No sign-in needed</span></div>
+</section>
+<div class="grid">
+  <section class="card" aria-labelledby="message-title">
+    <div class="sim-label">Fictional message · Safe classroom example</div>
+    <div class="sender"><span class="avatar" aria-hidden="true">?</span><div><strong>Account Support</strong><div class="small">Unexpected message in your inbox</div></div></div>
+    <h2 id="message-title">“Verify now or lose your account.”</h2>
+    <div class="message">
+      <p>Your account will be locked in 30 minutes. Claim your free gift and verify your account to keep access.</p>
+      <p><a id="fakeLink" href="#">example.com/gift</a><br><span class="small">Demo link — stays on this page.</span></p>
+      <p>Send us your password and the one-time code from your phone to confirm it's you.</p>
     </div>
-
-    <div class="scary-buttons">
-      <button class="scary-btn red" id="downloadBtn">Download Now</button>
-      <button class="scary-btn yellow" id="claimBtn">Claim Prize</button>
+    <p class="notice"><strong>Simulation only.</strong> There is no account to unlock and no gift to claim. Never enter or share real credentials during this activity.</p>
+    <p id="linkFeedback" class="feedback" role="status" aria-live="polite"></p>
+  </section>
+  <section class="card" aria-labelledby="decision-title">
+    <p class="eyebrow">You decide</p>
+    <h2 id="decision-title">What would you do next?</h2>
+    <p>Discuss your first move with a partner. Then choose an action to see what it could mean.</p>
+    <div id="choices" class="choices" hidden>
+      <button class="choice" id="downloadBtn" type="button" data-choice="follow" aria-pressed="false">Follow the message's link</button>
+      <button class="choice" id="claimBtn" type="button" data-choice="share" aria-pressed="false">Reply with a password or code</button>
+      <button class="choice" type="button" data-choice="verify" aria-pressed="false">Open the official app and check there</button>
     </div>
-
-    <p class="demo-note"><strong>Remember:</strong> In the real world, never click suspicious links or buttons! Report them instead.</p>
-    
-    <!-- New link to second page -->
-    <a class="lesson-link" href="lesson.html">Go to the Phishing Safety Lesson ➡️</a>
+    <noscript><p class="notice">Discuss the three choices: follow the link, share a code, or check the official app. Checking through a route you already trust is the safest choice. Enable JavaScript for interactive feedback.</p></noscript>
+    <p id="decisionFeedback" class="feedback" role="status" aria-live="polite"></p>
+    <details>
+      <summary>Reveal the warning signs</summary>
+      <ul>
+        <li><strong>Pressure:</strong> a 30-minute deadline tries to rush your decision.</li>
+        <li><strong>A reward:</strong> the gift distracts you from the account warning.</li>
+        <li><strong>A secret request:</strong> someone wants your password and sign-in code.</li>
+        <li><strong>An unverified destination:</strong> a familiar-looking link or sender name does not prove a message is genuine.</li>
+      </ul>
+      <p class="small">A polished message can still be a scam. Verify through the official app, a saved bookmark, or a teacher-approved address you already know.</p>
+    </details>
+  </section>
+</div>
+<section class="section" aria-labelledby="habits-title">
+  <div class="section-top"><h2 id="habits-title">Build three everyday habits.</h2><p>Small choices. Stronger accounts.</p></div>
+  <div class="habits">
+    <article class="card"><p class="number">01 / Protect</p><h3>Make each account unique.</h3><p>Use a long, unique password with a trusted password manager, or a passkey where available. Follow school rules for school accounts.</p></article>
+    <article class="card"><p class="number">02 / Verify</p><h3>Add another layer.</h3><p>Turn on multifactor authentication (MFA). Never share a sign-in code or approve a login you did not start.</p></article>
+    <article class="card"><p class="number">03 / Recover</p><h3>Have a way back in.</h3><p>Keep recovery options current. If something goes wrong, tell a trusted adult or school IT promptly. Getting help is the right move.</p></article>
   </div>
+</section>
+<section class="cta" aria-labelledby="next-title"><div><h2 id="next-title">Ready to secure the whole account?</h2><p>Learn the habits, plan your response, and try the knowledge check.</p></div><a class="button" href="lesson.html">Start the account security lesson →</a></section>
+</main>
+<footer><div class="wrap">Classroom practice · No real passwords, codes, or account details. Nothing you answer here is saved or sent.</div></footer>
+<script>
+// Preserve existing link destinations; move focus for keyboard navigation locally.
+document.querySelector('.skip').addEventListener('click', (event) => {
+  event.preventDefault();
+  document.getElementById('main').focus();
+  document.getElementById('main').scrollIntoView();
+});
 
-  <script>
-    const fakeLink = document.getElementById('fakeLink');
-    fakeLink.addEventListener('click', (e) => {
-      e.preventDefault();
-      alert("This could be dangerous in real life! But here it’s just a safe demo.");
-    });
+const messages = {
+  follow: "Pause and verify. In a real message, the link could lead to a fake sign-in page. Open the official app or a known bookmark instead. If you already clicked, stop and ask for help; clicking alone does not always mean an account was taken over.",
+  share: "Keep those secrets private. A password or one-time code could let someone sign in as you. If you already shared one, tell a trusted adult or school IT immediately and use the official account recovery process.",
+  verify: "That's the safer move. Check the account through the official app or a route you already trust, then report the suspicious message. Do not reply or approve an unexpected login request."
+};
+document.getElementById('choices').hidden = false;
+document.querySelectorAll('[data-choice]').forEach(button => {
+  button.addEventListener('click', () => {
+    document.querySelectorAll('[data-choice]').forEach(choice => choice.setAttribute('aria-pressed', String(choice === button)));
+    document.getElementById('decisionFeedback').textContent = messages[button.dataset.choice];
+  });
+});
+document.getElementById('fakeLink').addEventListener('click', event => {
+  event.preventDefault();
+  document.getElementById('linkFeedback').textContent = "This demo link stays here. In a real message, link text can hide a different destination. Go to the service independently instead of using an unexpected link.";
+});
 
-    document.getElementById('downloadBtn').addEventListener('click', () => {
-      alert("This could install a virus in real life! Be careful.");
-    });
-
-    document.getElementById('claimBtn').addEventListener('click', () => {
-      alert("This could try to steal your info in real life! Stay safe.");
-    });
-  </script>
+</script>
 </body>
 </html>
