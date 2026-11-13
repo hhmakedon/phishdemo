@@ -11,4 +11,4 @@ Both pages are self-contained static HTML with inline CSS and JavaScript. They u
 
 The existing `index.html` and `lesson.html` paths and link destinations are preserved for the classroom whitelist. GitHub Pages continues to publish from the root of `main`; no hosting or domain change is required.
 
-Content references: CISA's Secure Our World guidance on strong passwords, MFA, and recognizing phishing; FIDO Alliance's passkey guidance. No additional external destinations are needed to use the lesson.
+Content references: CISA's Secure Our World guidance on strong passwords, MFA, and recognizing phishing; FIDO Alliance's passkey guidance. The lesson also includes optional external links to Have I Been Pwned and PasswordMonster for teacher-led exploration. They open in new tabs; use fictional passwords only and keep personal email addresses and breach results private. These external sites load only when their links are followed. The core lesson and quiz still work without visiting them.
