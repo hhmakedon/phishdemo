@@ -72,11 +72,9 @@ li { margin:10px 0; }
 .click-cue { font-size:.78rem; font-weight:850; text-transform:uppercase; white-space:nowrap; }
 .lesson-start.is-visible .lesson-arrow { animation:point-to-lesson 1.2s ease-in-out infinite; }
 .lesson-start.is-visible .click-cue { animation:flash-click-here 1.2s step-end infinite; }
-.motion-toggle { display:block; margin:8px 0 0 auto; padding:6px 0; border:0; background:transparent; color:#dce5df; font-size:.78rem; text-decoration:underline; text-underline-offset:3px; }
-.lesson-start.motion-paused .lesson-arrow,.lesson-start.motion-paused .click-cue { animation:none; opacity:1; }
 @keyframes point-to-lesson { 0%,100% { transform:translateX(0); } 50% { transform:translateX(8px); } }
 @keyframes flash-click-here { 0%,100% { opacity:1; } 50% { opacity:0; } }
-@media (prefers-reduced-motion:reduce) { .lesson-start.is-visible .lesson-arrow,.lesson-start.is-visible .click-cue { animation:none; } .motion-toggle { display:none; } }
+@media (prefers-reduced-motion:reduce) { .lesson-start.is-visible .lesson-arrow,.lesson-start.is-visible .click-cue { animation:none; } }
 .button:hover { filter:brightness(.92); }
 .secondary { background:var(--soft); color:var(--ink); }
 footer { padding:28px 0; margin-top:32px; color:var(--muted); border-top:1px solid var(--line); font-size:.8rem; }
@@ -121,12 +119,12 @@ fieldset:disabled .option { cursor:default; }
 <section class="hero" aria-labelledby="intro-title">
   <p class="eyebrow">01 / Practice the pause</p>
   <h1 id="intro-title">Your account.<br><em>Your control.</em></h1>
-  <p class="lead">A message wants you to act fast. Your best move? Slow down. Practice spotting the pressure, then learn how to keep your accounts secure.</p>
-  <div class="meta"><span class="pill">About 20 minutes</span><span class="pill">Classroom simulation</span><span class="pill">No sign-in needed</span></div>
+  <p class="lead">Some messages try to rush you into a bad choice. Slow down. Learn to spot tricks and keep other people out of your accounts.</p>
+  <div class="meta"><span class="pill">About 15 minutes</span><span class="pill">Classroom practice</span><span class="pill">No sign-in needed</span></div>
 </section>
 <div class="grid">
   <section class="card" aria-labelledby="message-title">
-    <div class="sim-label">Fictional message · Safe classroom example</div>
+    <div class="sim-label">Made-up message · Safe classroom example</div>
     <div class="sender"><span class="avatar" aria-hidden="true">?</span><div><strong>Account Support</strong><div class="small">Unexpected message in your inbox</div></div></div>
     <h2 id="message-title">“Verify now or lose your account.”</h2>
     <div class="message">
@@ -134,13 +132,13 @@ fieldset:disabled .option { cursor:default; }
       <p><a id="fakeLink" href="#">example.com/gift</a><br><span class="small">Demo link — stays on this page.</span></p>
       <p>Send us your password and the one-time code from your phone to confirm it's you.</p>
     </div>
-    <p class="notice"><strong>Simulation only.</strong> There is no account to unlock and no gift to claim. Never enter or share real credentials during this activity.</p>
+    <p class="notice"><strong>This is a made-up example.</strong> There is no gift or locked account. Do not use real passwords or sign-in codes in this activity.</p>
     <p id="linkFeedback" class="feedback" role="status" aria-live="polite"></p>
   </section>
   <section class="card" aria-labelledby="decision-title">
     <p class="eyebrow">You decide</p>
     <h2 id="decision-title">What would you do next?</h2>
-    <p>Discuss your first move with a partner. Then choose an action to see what it could mean.</p>
+    <p>Tell a partner what you would do first. Then pick a choice to learn more.</p>
     <div id="choices" class="choices" hidden>
       <button class="choice" id="downloadBtn" type="button" data-choice="follow" aria-pressed="false">Follow the message's link</button>
       <button class="choice" id="claimBtn" type="button" data-choice="share" aria-pressed="false">Reply with a password or code</button>
@@ -154,21 +152,21 @@ fieldset:disabled .option { cursor:default; }
         <li><strong>Pressure:</strong> a 30-minute deadline tries to rush your decision.</li>
         <li><strong>A reward:</strong> the gift distracts you from the account warning.</li>
         <li><strong>A secret request:</strong> someone wants your password and sign-in code.</li>
-        <li><strong>An unverified destination:</strong> a familiar-looking link or sender name does not prove a message is genuine.</li>
+        <li><strong>A link you have not checked:</strong> a name you know does not prove a message is real.</li>
       </ul>
-      <p class="small">A polished message can still be a scam. Verify through the official app, a saved bookmark, or a teacher-approved address you already know.</p>
+      <p class="small">A message can look real and still be a scam. Check in the real app or use a web address your teacher trusts.</p>
     </details>
   </section>
 </div>
 <section class="section" aria-labelledby="habits-title">
   <div class="section-top"><h2 id="habits-title">Build three everyday habits.</h2><p>Small choices. Stronger accounts.</p></div>
   <div class="habits">
-    <article class="card"><p class="number">01 / Protect</p><h3>Make each account unique.</h3><p>Use a long, unique password with a trusted password manager, or a passkey where available. Follow school rules for school accounts.</p></article>
-    <article class="card"><p class="number">02 / Verify</p><h3>Add another layer.</h3><p>Turn on multifactor authentication (MFA). Never share a sign-in code or approve a login you did not start.</p></article>
-    <article class="card"><p class="number">03 / Recover</p><h3>Have a way back in.</h3><p>Keep recovery options current. If something goes wrong, tell a trusted adult or school IT promptly. Getting help is the right move.</p></article>
+    <article class="card"><p class="number">01 / Protect</p><h3>Use a different password.</h3><p>Use a long password for each account. A password manager is an app that makes and stores passwords. Ask your teacher which tools you may use.</p></article>
+    <article class="card"><p class="number">02 / Check</p><h3>Add a second check.</h3><p>A second check, such as a code from an app, makes it harder for someone else to sign in. Keep codes private. Only approve a sign-in you started.</p></article>
+    <article class="card"><p class="number">03 / Recover</p><h3>Have a way back in.</h3><p>Know how to get back into a locked account. If something goes wrong, tell a trusted adult or your school’s tech support team right away.</p></article>
   </div>
 </section>
-<section class="cta" aria-labelledby="next-title"><div><h2 id="next-title">Ready to secure the whole account?</h2><p>Learn the habits, plan your response, and try the knowledge check.</p></div><div class="lesson-actions"><div class="lesson-start"><span class="lesson-cue" aria-hidden="true"><span class="lesson-arrow">→</span><span class="click-cue">Click here</span></span><a class="button" href="lesson.html">Start the account security lesson →</a></div><button id="toggleLessonMotion" class="motion-toggle" type="button" aria-pressed="false" hidden>Pause animation</button></div></section>
+<section class="cta" aria-labelledby="next-title"><div><h2 id="next-title">Ready to secure the whole account?</h2><p>Read the tips, learn when to ask for help, and try the quiz.</p></div><div class="lesson-actions"><div class="lesson-start"><span class="lesson-cue" aria-hidden="true"><span class="lesson-arrow">→</span><span class="click-cue">Click here</span></span><a class="button" href="lesson.html">Start the account security lesson →</a></div></div></section>
 </main>
 <footer><div class="wrap">Classroom practice · No real passwords, codes, or account details. Nothing you answer here is saved or sent.</div></footer>
 <script>
@@ -180,9 +178,9 @@ document.querySelector('.skip').addEventListener('click', (event) => {
 });
 
 const messages = {
-  follow: "Pause and verify. In a real message, the link could lead to a fake sign-in page. Open the official app or a known bookmark instead. If you already clicked, stop and ask for help; clicking alone does not always mean an account was taken over.",
-  share: "Keep those secrets private. A password or one-time code could let someone sign in as you. If you already shared one, tell a trusted adult or school IT immediately and use the official account recovery process.",
-  verify: "That's the safer move. Check the account through the official app or a route you already trust, then report the suspicious message. Do not reply or approve an unexpected login request."
+  follow: "Stop and check. A link in a real message could lead to a fake sign-in page. Open the real app or use a web address you trust. If you already clicked, stop and ask an adult for help. A click alone does not always mean someone got into your account.",
+  share: "Keep passwords and codes private. Someone could use them to sign in as you. If you shared one, tell a trusted adult or school tech support right away. They can help you get your account back.",
+  verify: "That's the safer choice. Open the real app or use a web address you trust to check your account. Report the message to your teacher. Do not reply or approve a sign-in you did not start."
 };
 document.getElementById('choices').hidden = false;
 document.querySelectorAll('[data-choice]').forEach(button => {
@@ -193,18 +191,11 @@ document.querySelectorAll('[data-choice]').forEach(button => {
 });
 document.getElementById('fakeLink').addEventListener('click', event => {
   event.preventDefault();
-  document.getElementById('linkFeedback').textContent = "This demo link stays here. In a real message, link text can hide a different destination. Go to the service independently instead of using an unexpected link.";
+  document.getElementById('linkFeedback').textContent = "This practice link stays on this page. In a real message, a link can go somewhere other than the address it shows. Open the real app or use a web address you trust instead.";
 });
 
-// Start the lesson cue when it enters view; allow students to pause it.
+// Start the lesson cue when it enters view.
 const lessonStart = document.querySelector('.lesson-start');
-const motionToggle = document.getElementById('toggleLessonMotion');
-motionToggle.hidden = false;
-motionToggle.addEventListener('click', () => {
-  const paused = lessonStart.classList.toggle('motion-paused');
-  motionToggle.setAttribute('aria-pressed', String(paused));
-  motionToggle.textContent = paused ? 'Resume animation' : 'Pause animation';
-});
 const arrowObserver = new IntersectionObserver(entries => {
   if (entries.some(entry => entry.isIntersecting)) {
     lessonStart.classList.add('is-visible');
