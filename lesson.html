@@ -93,6 +93,11 @@ fieldset:disabled .option { cursor:default; }
 .quiz-actions { display:flex; gap:12px; flex-wrap:wrap; }
 #results { margin-top:24px; background:var(--soft); padding:22px; border-radius:10px; }
 #results h3 { font-size:1.2rem; }
+.quiz-countdown { font-weight:800; font-variant-numeric:tabular-nums; }
+.quiz-popup { width:min(480px,calc(100% - 40px)); max-height:80vh; overflow:auto; padding:30px; border:1px solid var(--line); border-radius:18px; background:var(--white); color:var(--ink); }
+.quiz-popup::backdrop { background:rgba(24,46,54,.65); }
+.quiz-popup h2 { font-size:1.5rem; }
+#quizLock .button { margin-top:14px; }
 [hidden] { display:none !important; }
 @media (max-width:800px) { .grid { grid-template-columns:1fr; } .lesson-layout { grid-template-columns:1fr; gap:24px; } .contents { position:static; } .contents ol { display:flex; flex-wrap:wrap; gap:8px 30px; } .contents li { margin:0; } .habits { grid-template-columns:1fr; } .cta { align-items:flex-start; flex-direction:column; } }
 @media (max-width:480px) { .wrap { padding:0 20px; } .header-inner { min-height:90px; gap:12px; } .class-label { max-width:120px; font-size:.75rem; text-align:right; } .hero { padding-top:40px; } .card { padding:22px; } .sim-label { margin:-22px -22px 22px; padding:12px 22px; } .section-top { display:block; } .section { margin-top:40px; } }
@@ -109,7 +114,7 @@ fieldset:disabled .option { cursor:default; }
   <p class="eyebrow">02 / Learn the habits</p>
   <h1 id="lesson-title">Keep access.<br><em>Keep control.</em></h1>
   <p class="lead">Account security means protecting how you sign in, noticing when something is wrong, and knowing how to get help.</p>
-  <div class="meta"><span class="pill">Read · Discuss · Practice</span><span class="pill">6-question check</span><span class="pill">No account details needed</span></div>
+  <div class="meta"><span class="pill">10-minute reading time</span><span class="pill">6-question check</span><span class="pill">No account details needed</span></div>
 </section>
 <div class="lesson-layout">
   <aside class="contents" aria-label="Lesson overview"><p>Today's learning goals</p><ol><li>Protect your sign-in.</li><li>Verify before acting.</li><li>Recover and report.</li></ol><p class="notice">Practice with fictional examples only. Do not change school account settings during class unless your teacher directs you.</p></aside>
@@ -146,8 +151,14 @@ fieldset:disabled .option { cursor:default; }
     <section class="card lesson-block" aria-labelledby="quiz-title">
       <p class="number">06 / Knowledge check</p><h2 id="quiz-title">Choose the safer next step.</h2>
       <p>Answer all six questions, then check your reasoning. Your score stays on this page and is not sent to your teacher.</p>
-      <noscript><p class="notice">Enable JavaScript for quiz grading. You can still discuss the questions below and use the lesson to explain each answer.</p></noscript>
-      <form id="quiz" novalidate>
+      <div id="quizLock" class="notice">
+        <p><strong>Read the lesson first.</strong> The quiz unlocks 10 minutes after you first open this lesson in this tab.</p>
+        <p>Time remaining: <span class="quiz-countdown" role="timer" aria-live="off" data-countdown>10:00</span></p>
+        <button class="button secondary" id="explainQuizLock" type="button" hidden>Why is the quiz locked?</button>
+      </div>
+      <p id="quizAvailability" role="status" aria-live="polite"></p>
+      <noscript><p class="notice">JavaScript is required to run the 10-minute timer and unlock the quiz. Enable it, then reload this lesson to begin. You can still read the lesson above.</p></noscript>
+      <form id="quiz" novalidate hidden inert>
         <fieldset id="question1"><legend>1. Why use a different password for every account?</legend><label class="option" for="q1a"><input id="q1a" type="radio" name="q1" value="a" required><span>It keeps a leak at one service from exposing the same password elsewhere.</span></label><label class="option" for="q1b"><input id="q1b" type="radio" name="q1" value="b" required><span>It means you no longer need any other protection.</span></label><label class="option" for="q1c"><input id="q1c" type="radio" name="q1" value="c" required><span>It makes short, easy-to-guess passwords safe.</span></label><p id="explanation1" class="answer-note" hidden></p></fieldset>
 <fieldset id="question2"><legend>2. A message asks for the sign-in code from your phone. What should you do?</legend><label class="option" for="q2a"><input id="q2a" type="radio" name="q2" value="a" required><span>Send it if the sender uses a familiar logo.</span></label><label class="option" for="q2b"><input id="q2b" type="radio" name="q2" value="b" required><span>Keep it private and verify through the official app or a known contact.</span></label><label class="option" for="q2c"><input id="q2c" type="radio" name="q2" value="c" required><span>Send half the code first.</span></label><p id="explanation2" class="answer-note" hidden></p></fieldset>
 <fieldset id="question3"><legend>3. A page uses https:// and looks professional. What does that tell you?</legend><label class="option" for="q3a"><input id="q3a" type="radio" name="q3" value="a" required><span>The service has checked that the sender is honest.</span></label><label class="option" for="q3b"><input id="q3b" type="radio" name="q3" value="b" required><span>Every link on the page is safe.</span></label><label class="option" for="q3c"><input id="q3c" type="radio" name="q3" value="c" required><span>The connection is encrypted, but the page could still be a scam.</span></label><p id="explanation3" class="answer-note" hidden></p></fieldset>
@@ -173,6 +184,13 @@ fieldset:disabled .option { cursor:default; }
 </div>
 </main>
 <footer><div class="wrap">Classroom practice · No real passwords, codes, or account details. Nothing you answer here is saved or sent.</div></footer>
+<dialog id="quizPopup" class="quiz-popup" aria-labelledby="quizPopupTitle" aria-describedby="quizPopupDescription">
+  <p class="eyebrow">Read · Discuss · Practice</p>
+  <h2 id="quizPopupTitle">The quiz opens after 10 minutes.</h2>
+  <p id="quizPopupDescription">Your reading timer starts when you first open this lesson in this tab. Use these 10 minutes to read the lesson, discuss the examples, and explore the classroom tools. The quiz will unlock automatically.</p>
+  <p>Time remaining: <span class="quiz-countdown" role="timer" aria-live="off" data-countdown>10:00</span></p>
+  <button class="button" id="closeQuizPopup" type="button" autofocus>Got it — start reading</button>
+</dialog>
 <script>
 // Preserve existing link destinations; move focus for keyboard navigation locally.
 document.querySelector('.skip').addEventListener('click', (event) => {
@@ -187,9 +205,65 @@ const submitButton = document.getElementById('submitQuiz');
 const retryButton = document.getElementById('retryQuiz');
 const results = document.getElementById('results');
 const error = document.getElementById('quizError');
-submitButton.hidden = false;
+const quizLock = document.getElementById('quizLock');
+const quizPopup = document.getElementById('quizPopup');
+const readingTime = 10 * 60 * 1000;
+const timerStorageKey = 'accountSecurityQuizUnlockAt.v1';
+let unlockAt = Date.now() + readingTime;
+// Remember only the timer deadline in this tab, never answers or account details.
+try {
+  const savedDeadline = Number(sessionStorage.getItem(timerStorageKey));
+  if (Number.isFinite(savedDeadline) && savedDeadline > 0 && savedDeadline <= unlockAt) {
+    unlockAt = savedDeadline;
+  } else {
+    sessionStorage.setItem(timerStorageKey, String(unlockAt));
+  }
+} catch {
+  // The timer still works if the browser blocks storage; reload starts it again.
+}
+let quizTimer;
+let quizUnlocked = false;
+submitButton.disabled = true;
+quiz.querySelectorAll('fieldset').forEach(fieldset => { fieldset.disabled = true; });
+function updateQuizLock() {
+  const remaining = Math.max(0, unlockAt - Date.now());
+  const seconds = Math.ceil(remaining / 1000);
+  const time = `${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, '0')}`;
+  document.querySelectorAll('[data-countdown]').forEach(timer => { timer.textContent = time; });
+  if (remaining > 0) return false;
+  if (!quizUnlocked) {
+    quizUnlocked = true;
+    quiz.hidden = false;
+    quiz.inert = false;
+    quiz.querySelectorAll('fieldset').forEach(fieldset => { fieldset.disabled = false; });
+    submitButton.hidden = false;
+    submitButton.disabled = false;
+    quizLock.hidden = true;
+    if (quizPopup.open) quizPopup.close();
+    document.getElementById('quizAvailability').textContent = 'Your 10-minute reading time is complete. The quiz is now unlocked.';
+    clearInterval(quizTimer);
+  }
+  return true;
+}
+function explainQuizLock() {
+  if (!updateQuizLock() && !quizPopup.open) quizPopup.showModal();
+}
+document.getElementById('closeQuizPopup').addEventListener('click', () => { quizPopup.close(); });
+document.getElementById('explainQuizLock').hidden = false;
+document.getElementById('explainQuizLock').addEventListener('click', explainQuizLock);
+if (!updateQuizLock()) {
+  quizTimer = setInterval(updateQuizLock, 1000);
+  explainQuizLock();
+}
+// Recheck the deadline after background throttling or a back/forward navigation.
+document.addEventListener('visibilitychange', updateQuizLock);
+window.addEventListener('pageshow', updateQuizLock);
 quiz.addEventListener('submit', event => {
   event.preventDefault();
+  if (!updateQuizLock()) {
+    explainQuizLock();
+    return;
+  }
   if (submitButton.disabled) return;
   const missing = answerKey.findIndex((_, i) => !quiz.querySelector(`input[name="q${i + 1}"]:checked`));
   if (missing !== -1) {
@@ -221,7 +295,12 @@ quiz.addEventListener('submit', event => {
   retryButton.hidden = false;
   document.getElementById('score').focus();
 });
-quiz.addEventListener('reset', () => {
+quiz.addEventListener('reset', event => {
+  if (!updateQuizLock()) {
+    event.preventDefault();
+    explainQuizLock();
+    return;
+  }
   quiz.querySelectorAll('fieldset').forEach(fieldset => { fieldset.disabled = false; });
   quiz.querySelectorAll('label').forEach(label => { label.classList.remove('correct', 'incorrect'); });
   quiz.querySelectorAll('.answer-note').forEach(note => { note.hidden = true; note.textContent = ''; });

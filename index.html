@@ -64,6 +64,12 @@ li { margin:10px 0; }
 .cta p { color:#dce5df; font-size:.9rem; }
 .button { display:inline-block; padding:12px 20px; background:var(--teal); color:white; border:0; border-radius:8px; text-decoration:none; font-weight:750; white-space:normal; text-align:center; min-height:48px; }
 .cta .button { background:#d8efb0; color:var(--ink); flex-shrink:0; }
+.lesson-start { display:flex; align-items:center; gap:16px; max-width:100%; }
+.lesson-start .button { flex:1; min-width:0; }
+.lesson-arrow { color:#d8efb0; font-size:2.8rem; line-height:1; flex-shrink:0; }
+.lesson-start.is-visible .lesson-arrow { animation:point-to-lesson 1.2s ease-in-out 4; }
+@keyframes point-to-lesson { 0%,100% { transform:translateX(0); } 50% { transform:translateX(8px); } }
+@media (prefers-reduced-motion:reduce) { .lesson-start.is-visible .lesson-arrow { animation:none; } }
 .button:hover { filter:brightness(.92); }
 .secondary { background:var(--soft); color:var(--ink); }
 footer { padding:28px 0; margin-top:32px; color:var(--muted); border-top:1px solid var(--line); font-size:.8rem; }
@@ -155,7 +161,7 @@ fieldset:disabled .option { cursor:default; }
     <article class="card"><p class="number">03 / Recover</p><h3>Have a way back in.</h3><p>Keep recovery options current. If something goes wrong, tell a trusted adult or school IT promptly. Getting help is the right move.</p></article>
   </div>
 </section>
-<section class="cta" aria-labelledby="next-title"><div><h2 id="next-title">Ready to secure the whole account?</h2><p>Learn the habits, plan your response, and try the knowledge check.</p></div><a class="button" href="lesson.html">Start the account security lesson →</a></section>
+<section class="cta" aria-labelledby="next-title"><div><h2 id="next-title">Ready to secure the whole account?</h2><p>Learn the habits, plan your response, and try the knowledge check.</p></div><div class="lesson-start"><span class="lesson-arrow" aria-hidden="true">→</span><a class="button" href="lesson.html">Start the account security lesson →</a></div></section>
 </main>
 <footer><div class="wrap">Classroom practice · No real passwords, codes, or account details. Nothing you answer here is saved or sent.</div></footer>
 <script>
@@ -182,6 +188,16 @@ document.getElementById('fakeLink').addEventListener('click', event => {
   event.preventDefault();
   document.getElementById('linkFeedback').textContent = "This demo link stays here. In a real message, link text can hide a different destination. Go to the service independently instead of using an unexpected link.";
 });
+
+// Animate when the lesson link first comes into view, then leave a still arrow.
+const lessonStart = document.querySelector('.lesson-start');
+const arrowObserver = new IntersectionObserver(entries => {
+  if (entries.some(entry => entry.isIntersecting)) {
+    lessonStart.classList.add('is-visible');
+    arrowObserver.disconnect();
+  }
+}, { threshold:0.5 });
+arrowObserver.observe(lessonStart);
 
 </script>
 </body>
